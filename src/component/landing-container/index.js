@@ -18,7 +18,7 @@ class LandingContainer extends React.Component {
       this.lock.getUserInfo(authResult.accessToken, (err, profile) => {
         if (err) return new Error('failed to authenticate')
         this.props.login(authResult.accessToken)
-        console.log(profile,'PROFILE');
+        console.log(profile, 'PROFILE')
       })
     })
   }
