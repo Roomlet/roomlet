@@ -12,6 +12,7 @@
     "watch": "webpack-dev-server --inline --hot"
   },
   "dependencies": {
+    "auth0-editprofile-widget": "^1.0.0",
     "auth0-lock": "^10.20.0",
     "babel-core": "^6.25.0",
     "babel-jest": "^20.0.3",

@@ -13,10 +13,12 @@ class LandingContainer extends React.Component {
 
   componentWillMount() {
     this.lock = new Auth0Lock(__AUTH0_CLIENT_ID__, __AUTH0_CLIENT_DOMAIN__)
+
     this.lock.on('authenticated', authResult => {
       this.lock.getUserInfo(authResult.accessToken, (err, profile) => {
         if (err) return new Error('failed to authenticate')
         this.props.login(authResult.accessToken)
+        console.log(profile,'PROFILE');
       })
     })
   }
