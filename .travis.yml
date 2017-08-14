@@ -1,0 +1,19 @@
+language: node_js
+node_js:
+  - '7'
+services:
+  - mongodb
+addons:
+  apt:
+    sources:
+      - ubuntu-toolchain-r-test
+    packages:
+      - gcc-4.8
+      - g++-4.8
+env:
+  - CXX=g++-4.8 APP_SECRET='lulwat' MONGODB_URI='mongodb://localhost/' AWS_BUCKET='fake-bucket' AWS_ACCESS_KEY_ID='fakekey' AWS_SECRET_ACCESS_KEY='fakekey' API_URL='http://localhost:7000' PORT=7000
+sudo: required
+before_script: npm i
+script:
+  - npm test
+  - npm run lint
