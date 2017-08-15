@@ -5,9 +5,7 @@ import { profileUpdateRequest } from '../../action/profile-actions.js'
 class ProfileSettings extends React.Component {
   constructor(props) {
     super(props)
-    this.state = props.profile
-      ? { ...props.profile }
-      : { bio: '', token: props.token }
+    this.state = props.profile ? { ...props.profile } : { bio: '' }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -19,7 +17,7 @@ class ProfileSettings extends React.Component {
   handleChange(e) {
     let { value, name } = e.target
 
-    if (name === 'bio') this.setState({ bio: value })
+    this.setState({ [name]: value })
   }
 
   handleSubmit(e) {
