@@ -1,35 +1,25 @@
-export const profileCreate = profile => ({
-  type: 'PROFILE_CREATE',
-  payload: profile,
-})
+import superagent from 'superagent'
 
 export const profileUpdate = profile => ({
   type: 'PROFILE_UPDATE',
   payload: profile,
 })
 
-export const profileCreateRequest = profile => (dispatch, getState) => {
-  let { auth } = getState()
+export const profileUpdateRequest = profile => (dispatch, getState) => {
+  let { userId, token } = getState()
+  console.log('profileUpdateRequest')
   return superagent
-    .post(`${__API_URL__}/profiles`)
-    .set('Authorization', `Bearer ${auth}`)
-    .field('bio', profile.bio)
-    .attach('avatar', profile.avatar)
+    .patch(`https://kyleaardal.auth0.com/api/v2/users/${userId}`)
+    .set('Authorization', `Bearer ${__AUTH0_API_TOKEN__}`)
+    .set('accept', 'application/json')
+    .set('content-type', 'application/json')
+    .send(JSON.stringify({ user_metadata: { bio: profile.bio } }))
     .then(res => {
-      dispatch(profileCreate(res.body))
+      console.log('updateprofile response', res)
+      dispatch(profileUpdate(profile))
       return res
     })
-}
-
-export const profileUpdateRequest = profile => (dispatch, getState) => {
-  let { auth } = getState()
-  return superagent
-    .put(`${__API_URL__}/profiles`)
-    .set('Authorization', `Bearer ${auth}`)
-    .field('bio', profile.bio)
-    .attach('avatar', profile.avatar)
-    .then(res => {
-      dispatch(profileCreate(res.body))
-      return res
+    .catch(err => {
+      console.log(err)
     })
 }

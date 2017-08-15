@@ -1,5 +1,3 @@
-import superagent from 'superagent'
-
 export const login = token => {
   localStorage.setItem('authToken', token)
   return {
