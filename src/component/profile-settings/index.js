@@ -7,8 +7,16 @@ class ProfileSettings extends React.Component {
     super(props)
     this.state = props.profile
       ? { ...props.profile }
-      : { bio: '', token: props.token }
-
+      : {
+        username: '',
+        bio: '',
+        budget: '',
+        ocupation: '',
+        smoke: '',
+        pets: '',
+        clean: '',
+        hours: '',
+      }
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -18,8 +26,9 @@ class ProfileSettings extends React.Component {
 
   handleChange(e) {
     let { value, name } = e.target
-
-    if (name === 'bio') this.setState({ bio: value })
+    this.setState({ [name]: value })
+    console.log(this.state)
+    // if (name === 'bio') this.setState({ bio: value })
   }
 
   handleSubmit(e) {
@@ -33,6 +42,15 @@ class ProfileSettings extends React.Component {
   render() {
     return (
       <div className="profile-form">
+        <div> Profile Edit </div>
+
+        <p> Username </p>
+        <input
+          type="username"
+          name="username"
+          value={this.state.username}
+          onChange={this.handleChange}
+        />
         <form onSubmit={this.handleSubmit}>
           <textarea
             type="text"
@@ -40,6 +58,42 @@ class ProfileSettings extends React.Component {
             value={this.state.bio}
             onChange={this.handleChange}
           />
+          <p> Phone-number</p>
+          <input
+            type="text"
+            name="phone"
+            value={this.state.phone}
+            onChange={this.handleChange}
+          />
+          <p> Budget </p>
+          <input
+            type="text"
+            name="budget"
+            value={this.state.budget}
+            onChange={this.handleChange}
+          />
+          <p> Ocupation </p>
+          <input
+            type="text"
+            name="ocupation"
+            value={this.state.ocupation}
+            onChange={this.handleChange}
+          />
+          <p> Smoke </p>
+          <input
+            type="checkbox"
+            name="smoke"
+            value={this.state.smoke}
+            onChange={this.handleChange}
+          />
+          <p> Hours Available </p>
+          <input
+            type="date"
+            name="hours"
+            value={this.state.bio}
+            onChange={this.handleChange}
+          />
+
           <button type="submit"> Submit </button>
         </form>
       </div>
