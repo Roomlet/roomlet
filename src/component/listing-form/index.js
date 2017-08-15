@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { listingCreate } from '../../action/listing-actions'
+import { listingCreateRequest } from '../../action/listing-actions'
 
 class ListingForm extends React.Component {
   constructor(props) {
@@ -26,7 +26,7 @@ class ListingForm extends React.Component {
     console.log('profile in listing form', this.props.profile)
     this.state.listingCreatedOn = new Date()
 
-    this.props.listingCreate(this.props)
+    this.props.listingCreate(this.state)
 
     this.setState({ listingURL: '' })
     this.setState({ name: '' })
@@ -62,7 +62,7 @@ export const mapStateToProps = state => ({
 })
 
 export const mapDispatchToProps = dispatch => ({
-  listingCreate: listing => dispatch(listingCreate(listing)),
+  listingCreate: listing => dispatch(listingCreateRequest(listing)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListingForm)
