@@ -23,3 +23,4 @@ export const profileUpdateRequest = profile => (dispatch, getState) => {
       console.log(err)
     })
 }
+
