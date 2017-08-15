@@ -2,6 +2,7 @@ import React from 'react'
 import Loading from '../loading'
 import Auth0Lock from 'auth0-lock'
 import { connect } from 'react-redux'
+import { storeId } from '../../action/user-id-actions.js'
 import { login, logout } from '../../action/auth-actions.js'
 
 class LandingContainer extends React.Component {
@@ -18,7 +19,7 @@ class LandingContainer extends React.Component {
       this.lock.getUserInfo(authResult.accessToken, (err, profile) => {
         if (err) return new Error('failed to authenticate')
         this.props.login(authResult.accessToken)
-        console.log(profile, 'PROFILE')
+        this.props.storeId(profile.user_id)
       })
     })
   }
@@ -39,6 +40,7 @@ class LandingContainer extends React.Component {
 export const mapStateToProps = state => ({})
 
 export const mapDispatchToProps = dispatch => ({
+  storeId: id => dispatch(storeId(id)),
   login: token => dispatch(login(token)),
   logout: () => dispatch(logout()),
 })
