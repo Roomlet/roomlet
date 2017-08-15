@@ -18,6 +18,7 @@ let plugins = [
     __API_URL__: JSON.stringify(process.env.API_URL),
     __AUTH0_CLIENT_ID__: JSON.stringify(process.env.AUTH0_CLIENT_ID),
     __AUTH0_CLIENT_DOMAIN__: JSON.stringify(process.env.AUTH0_CLIENT_DOMAIN),
+    __AUTH0_API_TOKEN__: JSON.stringify(process.env.AUTH0_API_TOKEN),
   }),
 ]
 
