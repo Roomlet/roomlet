@@ -39,8 +39,8 @@ class LandingContainer extends React.Component {
         console.log('PROFILE', profile)
         this.props.login(authResult.accessToken)
         this.props.storeId(profile.user_id)
-        // remove ! below to retore proper behavior
-        !this.state.signUp
+
+        this.state.signUp
           ? this.props.history.push('/settings')
           : this.props.history.push('/dashboard')
       })
