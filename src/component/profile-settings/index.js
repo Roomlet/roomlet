@@ -1,6 +1,12 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { profileUpdateRequest } from '../../action/profile-actions.js'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import SmokeFree from 'material-ui/svg-icons/places/smoke-free'
+import Smoke from 'material-ui/svg-icons/places/smoking-rooms'
+import TextField from 'material-ui/TextField'
+import Checkbox from 'material-ui/Checkbox'
+import Paper from 'material-ui/Paper'
 
 class ProfileSettings extends React.Component {
   constructor(props) {
@@ -40,60 +46,81 @@ class ProfileSettings extends React.Component {
   }
 
   render() {
+    const underlineFocus = {
+      borderBottomColor: '#3AB08F',
+    }
+
+    const style = {
+      height: 100,
+      width: 100,
+      margin: 20,
+      display: 'inline-block',
+    }
+
     return (
       <div className="profile-form">
         <div> Profile Edit </div>
+        <MuiThemeProvider>
+          <form onSubmit={this.handleSubmit}>
+            <p>
+              {this.state.username}
+            </p>
+            <TextField
+              type="username"
+              name="username"
+              value={this.state.username}
+              onChange={this.handleChange}
+              underlineFocusStyle={underlineFocus}
+            />
+            <p> Bio </p>
+            <TextField
+              type="text"
+              name="bio"
+              value={this.state.bio}
+              onChange={this.handleChange}
+              underlineFocusStyle={underlineFocus}
+              multiLine={true}
+              rows={4}
+            />
+            <p> Phone Number </p>
+            <TextField
+              type="text"
+              name="phone"
+              value={this.state.phone}
+              onChange={this.handleChange}
+              underlineFocusStyle={underlineFocus}
+            />
+            <p> Budget </p>
+            <TextField
+              type="text"
+              name="budget"
+              value={this.state.budget}
+              onChange={this.handleChange}
+              underlineFocusStyle={underlineFocus}
+            />
+            <p> Ocupation </p>
+            <TextField
+              type="text"
+              name="ocupation"
+              value={this.state.ocupation}
+              onChange={this.handleChange}
+              underlineFocusStyle={underlineFocus}
+            />
+            <p> Smoke </p>
 
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            {this.state.username}
-          </p>
-          <input
-            type="username"
-            name="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-          <p> Bio </p>
-          <textarea
-            type="text"
-            name="bio"
-            value={this.state.bio}
-            onChange={this.handleChange}
-          />
-          <p> Phone Number </p>
-          <input
-            type="text"
-            name="phone"
-            value={this.state.phone}
-            onChange={this.handleChange}
-          />
-          <p> Budget </p>
-          <input
-            type="text"
-            name="budget"
-            value={this.state.budget}
-            onChange={this.handleChange}
-          />
-          <p> Ocupation </p>
-          <input
-            type="text"
-            name="ocupation"
-            value={this.state.ocupation}
-            onChange={this.handleChange}
-          />
-          <p> Smoke </p>
-          <input
-            type="checkbox"
-            name="smoke"
-            value={this.state.smoke}
-            onChange={this.handleChange}
-          />
+            <Checkbox
+              checkedIcon={<SmokeFree />}
+              uncheckedIcon={<Smoke />}
+              value={this.state.smoke}
+              onChange={this.handleChange}
+              iconStyle={{ fill: 'black' }}
+            />
 
-          <p> Pets, clean, hours </p>
+            <p> Pets, clean, hours </p>
 
-          <button type="submit"> Submit </button>
-        </form>
+            <button type="submit"> Submit </button>
+          </form>
+        </MuiThemeProvider>
       </div>
     )
   }

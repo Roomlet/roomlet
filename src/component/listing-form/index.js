@@ -1,6 +1,6 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { listingCreate } from '../../action/listing-actions'
+import { listingCreate } from '../../action/listing-actions.js'
 
 class ListingForm extends React.Component {
   constructor(props) {
@@ -57,7 +57,9 @@ class ListingForm extends React.Component {
   }
 }
 
-export const mapStateToProps = state => ({})
+export const mapStateToProps = state => ({
+  profile: state,
+})
 
 export const mapDispatchToProps = dispatch => ({
   listingCreate: listing => dispatch(listingCreate(listing)),

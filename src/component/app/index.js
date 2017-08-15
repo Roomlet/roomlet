@@ -3,11 +3,19 @@ import ProfileSettings from '../profile-settings'
 import { Route, BrowserRouter } from 'react-router-dom'
 import LandingContainer from '../landing-container'
 import DashboardContainer from '../dashboard-container'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import AppBar from 'material-ui/AppBar'
+
 class App extends React.Component {
   render() {
     return (
       <div className="app">
-        <h1>Roomlet</h1>
+        <MuiThemeProvider>
+          <AppBar
+            title="Roomlet"
+            style={{ backgroundColor: '#3AB08F', fontFamily: 'Libre Franklin' }}
+          />
+        </MuiThemeProvider>
         <BrowserRouter>
           <div>
             <Route exact path="/" component={LandingContainer} />
