@@ -8,7 +8,7 @@ class ListingForm extends React.Component {
     this.state = {
       name: '',
       listingURL: '',
-      listingCreatedOn: undefined,
+      listingCreatedOn: '',
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -23,11 +23,13 @@ class ListingForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    this.setState({ listingCreatedOn: Date.now() })
+
+    this.state.listingCreatedOn = new Date()
 
     this.props.listingCreate(this.state)
 
     this.setState({ listingURL: '' })
+    this.setState({ name: '' })
   }
 
   render() {
