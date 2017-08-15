@@ -9,8 +9,10 @@ class App extends React.Component {
       <div className="app">
         <h1>Roomlet</h1>
         <BrowserRouter>
-          <Route exact path="/" component={LandingContainer} />
-          <Route exact path="/settings" component={ProfileSettings} />
+          <div>
+            <Route exact path="/" component={LandingContainer} />
+            <Route exact path="/settings" component={ProfileSettings} />
+          </div>
         </BrowserRouter>
       </div>
     )

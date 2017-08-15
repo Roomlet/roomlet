@@ -3573,6 +3573,10 @@ jsx-ast-utils@^2.0.0:
   dependencies:
     array-includes "^3.0.3"
 
+jsxobj@^1.1.0:
+  version "1.1.0"
+  resolved "https://registry.yarnpkg.com/jsxobj/-/jsxobj-1.1.0.tgz#ab87b7b3904fa6a28628b58c97058f95daf5e238"
+
 jwt-decode@^1.4.0:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/jwt-decode/-/jwt-decode-1.5.1.tgz#bda8d8731b9b739ee8b4a31a0d025ca94ae92d3b"
