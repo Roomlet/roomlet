@@ -6,7 +6,7 @@ export const profileUpdate = profile => ({
 })
 
 export const profileUpdateRequest = profile => (dispatch, getState) => {
-  let { userId, token } = getState()
+  let { userId } = getState()
   console.log('profileUpdateRequest')
   return superagent
     .patch(`https://kyleaardal.auth0.com/api/v2/users/${userId}`)
