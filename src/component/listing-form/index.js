@@ -23,10 +23,10 @@ class ListingForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-
+    console.log('profile in listing form', this.props.profile)
     this.state.listingCreatedOn = new Date()
 
-    this.props.listingCreate(this.state)
+    this.props.listingCreate(this.props)
 
     this.setState({ listingURL: '' })
     this.setState({ name: '' })
@@ -57,7 +57,9 @@ class ListingForm extends React.Component {
   }
 }
 
-export const mapStateToProps = state => ({})
+export const mapStateToProps = state => ({
+  profile: state,
+})
 
 export const mapDispatchToProps = dispatch => ({
   listingCreate: listing => dispatch(listingCreate(listing)),

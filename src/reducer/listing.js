@@ -1,4 +1,6 @@
-export default (state = [], action) => {
+let initial = {}
+
+export default (state, action) => {
   let { type, payload } = action
   switch (type) {
   case 'LISTINGS_SET':
@@ -12,6 +14,6 @@ export default (state = [], action) => {
   case 'LOGOUT':
     return []
   default:
-    return state
+    return initial
   }
 }
