@@ -13,7 +13,21 @@ class LandingContainer extends React.Component {
   }
 
   componentWillMount() {
-    this.lock = new Auth0Lock(__AUTH0_CLIENT_ID__, __AUTH0_CLIENT_DOMAIN__)
+    const options = {
+      theme: {
+        logo: '../../../roomlet.png',
+        primaryColor: '#3AB08F',
+      },
+      languageDictionary: {
+        title: 'Roomlet',
+      },
+    }
+
+    this.lock = new Auth0Lock(
+      __AUTH0_CLIENT_ID__,
+      __AUTH0_CLIENT_DOMAIN__,
+      options
+    )
 
     this.lock.on('authenticated', authResult => {
       this.lock.getUserInfo(authResult.accessToken, (err, profile) => {
