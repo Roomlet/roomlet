@@ -17,6 +17,7 @@ class ProfileSettings extends React.Component {
         clean: '',
         hours: '',
       }
+    //smoke and hours need to be adjusted
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -28,15 +29,14 @@ class ProfileSettings extends React.Component {
     let { value, name } = e.target
     this.setState({ [name]: value })
     console.log(this.state)
-    // if (name === 'bio') this.setState({ bio: value })
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    //TODO: make a patch request with token and id to api/v2/users/id
     console.log('profile submit')
     this.props.profileUpdate(this.state)
     console.log('profile submit after')
+    console.log(this.props, 'this.props!!!')
   }
 
   render() {
@@ -44,21 +44,24 @@ class ProfileSettings extends React.Component {
       <div className="profile-form">
         <div> Profile Edit </div>
 
-        <p> Username </p>
-        <input
-          type="username"
-          name="username"
-          value={this.state.username}
-          onChange={this.handleChange}
-        />
         <form onSubmit={this.handleSubmit}>
+          <p>
+            {this.state.username}
+          </p>
+          <input
+            type="username"
+            name="username"
+            value={this.state.username}
+            onChange={this.handleChange}
+          />
+          <p> Bio </p>
           <textarea
             type="text"
             name="bio"
             value={this.state.bio}
             onChange={this.handleChange}
           />
-          <p> Phone-number</p>
+          <p> Phone Number </p>
           <input
             type="text"
             name="phone"
@@ -86,13 +89,8 @@ class ProfileSettings extends React.Component {
             value={this.state.smoke}
             onChange={this.handleChange}
           />
-          <p> Hours Available </p>
-          <input
-            type="date"
-            name="hours"
-            value={this.state.bio}
-            onChange={this.handleChange}
-          />
+
+          <p> Pets, clean, hours </p>
 
           <button type="submit"> Submit </button>
         </form>
