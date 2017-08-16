@@ -1,5 +1,6 @@
 import React from 'react'
 import ListingForm from '../listing-form'
+import LandingContainer from '../landing-container'
 
 class DashboardContainer extends React.Component {
   constructor(props) {
@@ -10,7 +11,7 @@ class DashboardContainer extends React.Component {
   render() {
     return (
       <div>
-        <h1>Dashboard</h1>
+        <LandingContainer />
         <ListingForm />
       </div>
     )

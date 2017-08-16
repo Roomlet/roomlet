@@ -2,28 +2,27 @@ import React from 'react'
 import { mount, shallow } from 'enzyme'
 import superagent from 'superagent'
 // import mocker from 'superagent-mocker'
-import appStoreCreate from '../lib/store-create.js'
-import profileSettings from '../component/profile-settings'
+import storeCreate from '../lib/store-create.js'
+import { persistStore } from 'redux-persist'
+import ProfileSettings from '../component/profile-settings'
+
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import SmokeFree from 'material-ui/svg-icons/places/smoke-free'
+import Smoke from 'material-ui/svg-icons/places/smoking-rooms'
+import Pets from 'material-ui/svg-icons/action/pets'
+import TextField from 'material-ui/TextField'
+import Checkbox from 'material-ui/Checkbox'
+import Paper from 'material-ui/Paper'
+import Divider from 'material-ui/Divider'
+import TimePicker from 'material-ui/TimePicker'
+import RaisedButton from 'material-ui/RaisedButton'
 
 describe('Profile Settings Container', () => {
-  test('testing initial state of the profile form', () => {
-    let wrapper = mount(<profileSettings />)
-    console.log(wrapper.state)
-    expect(wrapper.state('username')).toBe('')
-    expect(wrapper.state('bio')).toBe('')
-    expect(wrapper.state('avatar')).toBe('')
-    expect(wrapper.state('clean')).toBe('')
-  })
-  test('description input  can update the state', () => {
-    test('testing bio', () => {
-      let wrapper = mount(<profileSettings />)
-      wrapper.find('input[name="bio"]').simulate('change', {
-        target: {
-          name: 'bio',
-          value: 'this is a bio',
-        },
-      })
-      expect(wrapper.state('bio')).toEqual('this is a bio')
-    })
+  test('testing initial rendering', () => {
+    const store = storeCreate()
+    persistStore(store)
+    const wrapper = mount(<ProfileSettings store={store} />)
+    const div = document.createElement('div')
+    ReactDOM.render(<wrapper />, div)
   })
 })

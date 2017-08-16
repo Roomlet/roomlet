@@ -11,12 +11,4 @@ describe('App', () => {
     const div = document.createElement('div')
     ReactDOM.render(<App />, div)
   })
-
-  describe('render', () => {
-    it('should render the clock', () => {
-      const app = shallow(<App />)
-
-      expect(clock.contains(time)).toEqual(true)
-    })
-  })
 })
