@@ -9,15 +9,12 @@ import Divider from 'material-ui/Divider'
 import ListingItem from '../listing-item'
 import { listingCreateRequest } from '../../action/listing-actions'
 
-let renderIf = (t, c) => (t ? c : undefined)
-
-let listingDoesExist = false
-
 class ListingForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       name: '',
+      verified: false,
       listingURL: '',
       listingCreatedOn: '',
     }
@@ -36,12 +33,11 @@ class ListingForm extends React.Component {
     e.preventDefault()
     console.log('profile in listing form', this.props.profile)
     this.state.listingCreatedOn = new Date()
-
+    this.state.verified = false
     this.props.listingCreate(this.state)
 
     this.setState({ listingURL: '' })
     this.setState({ name: '' })
-    listingDoesExist = true
   }
 
   render() {
@@ -70,11 +66,11 @@ class ListingForm extends React.Component {
             <RaisedButton label="Add Listing" fullWidth={true} />
           </form>
         </MuiThemeProvider>
-        <ul id="unverified-listings">
-          {renderIf(
-            listingDoesExist,
-            <ListingItem listings={this.props.listings} />
-          )}
+        <ul>
+          <ListingItem listings={this.props.listings} verified={false} />
+        </ul>
+        <ul>
+          <ListingItem listings={this.props.listings} verified={true} />
         </ul>
       </div>
     )
