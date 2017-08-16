@@ -1,5 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
+import { listingCreate } from '../../action/listing-actions.js'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import Paper from 'material-ui/Paper'
+import TextField from 'material-ui/TextField'
+import RaisedButton from 'material-ui/RaisedButton'
+import Divider from 'material-ui/Divider'
 import ListingItem from '../listing-item'
 import { listingCreateRequest } from '../../action/listing-actions'
 
@@ -36,24 +42,30 @@ class ListingForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form id="listing form" onSubmit={this.handleSubmit}>
-          <input
-            name="name"
-            type="text"
-            placeholder="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-          <input
-            name="listingURL"
-            type="text"
-            placeholder="listing URL"
-            value={this.state.listingURL}
-            onChange={this.handleChange}
-          />
-          <button>add listing</button>
-        </form>
+      <div style={{ textAlign: 'center' }}>
+        <MuiThemeProvider>
+          <form id="listing form" onSubmit={this.handleSubmit}>
+            <TextField
+              name="name"
+              type="text"
+              placeholder="Name"
+              value={this.state.name}
+              onChange={this.handleChange}
+              underlineShow={false}
+            />
+            <Divider />
+            <TextField
+              name="listingURL"
+              type="text"
+              placeholder="Listing URL"
+              value={this.state.listingURL}
+              onChange={this.handleChange}
+              underlineShow={false}
+            />
+            <Divider />
+            <RaisedButton label="Add Listing" fullWidth={true} />
+          </form>
+        </MuiThemeProvider>
         <ul>
           <ListingItem listings={this.props.listings} verified={false} />
         </ul>
