@@ -12,6 +12,8 @@ import Divider from 'material-ui/Divider'
 import TimePicker from 'material-ui/TimePicker'
 import RaisedButton from 'material-ui/RaisedButton'
 import LandingContainer from '../landing-container'
+import * as util from '../../lib/util.js'
+import uuid from 'uuid/v1'
 
 class ProfileSettings extends React.Component {
   constructor(props) {
@@ -21,6 +23,8 @@ class ProfileSettings extends React.Component {
       ? { ...props.profile }
       : {
         username: '',
+        avatar: '',
+        preview: '',
         bio: '',
         budget: '',
         ocupation: '',
@@ -29,7 +33,6 @@ class ProfileSettings extends React.Component {
         clean: '',
         hours: '',
       }
-
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -39,7 +42,6 @@ class ProfileSettings extends React.Component {
 
   handleChange(e) {
     let { value, name } = e.target
-
     this.setState({ [name]: value })
   }
 
@@ -59,6 +61,58 @@ class ProfileSettings extends React.Component {
     const formStyle = {
       marginLeft: 20,
     }
+        <form onSubmit={this.handleSubmit}>
+          <p>
+            {this.state.username}
+          </p>
+          <input
+            type="username"
+            name="username"
+            value={this.state.username}
+            onChange={this.handleChange}
+          />
+          <input
+            type="file"
+            name="avatar"
+            value={this.state.avatar}
+            onChange={this.handleChange}
+          />
+          <img src={this.state.preview} />
+          <p> Bio </p>
+          <textarea
+            type="text"
+            name="bio"
+            value={this.state.bio}
+            onChange={this.handleChange}
+          />
+          <p> Phone Number </p>
+          <input
+            type="text"
+            name="phone"
+            value={this.state.phone}
+            onChange={this.handleChange}
+          />
+          <p> Budget </p>
+          <input
+            type="text"
+            name="budget"
+            value={this.state.budget}
+            onChange={this.handleChange}
+          />
+          <p> Ocupation </p>
+          <input
+            type="text"
+            name="ocupation"
+            value={this.state.ocupation}
+            onChange={this.handleChange}
+          />
+          <p> Smoke </p>
+          <input
+            type="checkbox"
+            name="smoke"
+            value={this.state.smoke}
+            onChange={this.handleChange}
+          />
 
     return (
       <div className="profile-form">
