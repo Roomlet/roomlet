@@ -22,7 +22,8 @@ export const listingDelete = listing => ({
 
 export const listingsFetchRequest = listing => (dispatch, getState) => {
   return superagent.get(`${__API_URL__}/api/listings`).then(res => {
-    dispatch(listingsSet(res.body.data))
+    dispatch(listingsSet(res.body))
+    console.log('fetched data', res.body)
     return res
   })
 }
@@ -33,7 +34,6 @@ export const listingCreateRequest = listing => (dispatch, getState) => {
     .post(`${__API_URL__}/api/listings`)
     .send(listing)
     .then(res => {
-      console.log(res)
       dispatch(listingCreate(res.body))
       return res
     })
