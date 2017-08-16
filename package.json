@@ -5,6 +5,12 @@
   "repository": "https://github.com/Roomlet/roomlet.git",
   "author": "Kyle Aardal <aardal.kyle@gmail.com>",
   "license": "MIT",
+  "jest": {
+    "globals": {
+      "__DEBUG__": true,
+      "__API_URL__": "http://localhost:3000"
+    }
+  },
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
@@ -46,6 +52,7 @@
     "superagent": "^3.5.2",
     "uglifyjs-webpack-plugin": "^0.4.6",
     "url-loader": "^0.5.9",
+    "uuid": "^3.1.0",
     "validator": "^8.0.0",
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.5.1"

@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { profileUpdateRequest } from '../../action/profile-actions.js'
+import * as util from '../../lib/util.js'
+import uuid from 'uuid/v1'
 
 class ProfileSettings extends React.Component {
   constructor(props) {
@@ -10,6 +12,8 @@ class ProfileSettings extends React.Component {
       ? { ...props.profile }
       : {
         username: '',
+        avatar: '',
+        preview: '',
         bio: '',
         budget: '',
         ocupation: '',
@@ -18,7 +22,6 @@ class ProfileSettings extends React.Component {
         clean: '',
         hours: '',
       }
-    //smoke and hours need to be adjusted
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -28,7 +31,6 @@ class ProfileSettings extends React.Component {
 
   handleChange(e) {
     let { value, name } = e.target
-
     this.setState({ [name]: value })
   }
 
@@ -55,6 +57,13 @@ class ProfileSettings extends React.Component {
             value={this.state.username}
             onChange={this.handleChange}
           />
+          <input
+            type="file"
+            name="avatar"
+            value={this.state.avatar}
+            onChange={this.handleChange}
+          />
+          <img src={this.state.preview} />
           <p> Bio </p>
           <textarea
             type="text"
