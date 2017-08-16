@@ -45,6 +45,7 @@ export const listingCreateRequest = listing => (dispatch, getState) => {
 export const listingDeleteRequest = listing => (dispatch, getState) => {
   return superagent
     .delete(`${__API_URL__}/api/listings/${listing._id}`)
+    .set('Authorization', `Bearer ${listing.token}`)
     .then(res => {
       dispatch(listingDelete(listing))
       return res
@@ -54,6 +55,7 @@ export const listingDeleteRequest = listing => (dispatch, getState) => {
 export const listingUpdateRequest = listing => (dispatch, getState) => {
   return superagent
     .put(`${__API_URL__}/api/listings/${listing._id}`)
+    .set('Authorization', `Bearer ${listing.token}`)
     .send(listing)
     .then(res => {
       dispatch(listingUpdate(res.body))
