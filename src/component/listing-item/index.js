@@ -12,21 +12,23 @@ class ListingItem extends React.Component {
     console.log(this.props.listings)
     return (
       <div>
-        {this.props.listings.map((listing, i) => {
-          return (
-            <li key={listing._id}>
-              name: {listing.name}
-              <br />
-              url: {listing.listingURL}
-              <button
-                onClick={() => this.props.listingDelete(listing)}
-                className="listing-delete"
-              >
-                x
-              </button>
-            </li>
-          )
-        })}
+        {this.props.listings
+          .filter(listing => listing.verified === this.props.verified)
+          .map((listing, i) => {
+            return (
+              <li key={listing._id}>
+                name: {listing.name}
+                <br />
+                url: {listing.listingURL}
+                <button
+                  onClick={() => this.props.listingDelete(listing)}
+                  className="listing-delete"
+                >
+                  x
+                </button>
+              </li>
+            )
+          })}
       </div>
     )
   }

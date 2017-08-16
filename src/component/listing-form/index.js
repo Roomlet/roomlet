@@ -8,6 +8,7 @@ class ListingForm extends React.Component {
     super(props)
     this.state = {
       name: '',
+      verified: false,
       listingURL: '',
       listingCreatedOn: '',
     }
@@ -26,7 +27,7 @@ class ListingForm extends React.Component {
     e.preventDefault()
     console.log('profile in listing form', this.props.profile)
     this.state.listingCreatedOn = new Date()
-
+    this.state.verified = false
     this.props.listingCreate(this.state)
 
     this.setState({ listingURL: '' })
@@ -53,8 +54,11 @@ class ListingForm extends React.Component {
           />
           <button>add listing</button>
         </form>
-        <ul id="unverified-listings">
-          <ListingItem listings={this.props.listings} />
+        <ul>
+          <ListingItem listings={this.props.listings} verified={false} />
+        </ul>
+        <ul>
+          <ListingItem listings={this.props.listings} verified={true} />
         </ul>
       </div>
     )
