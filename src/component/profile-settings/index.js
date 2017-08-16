@@ -4,9 +4,14 @@ import { profileUpdateRequest } from '../../action/profile-actions.js'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import SmokeFree from 'material-ui/svg-icons/places/smoke-free'
 import Smoke from 'material-ui/svg-icons/places/smoking-rooms'
+import Pets from 'material-ui/svg-icons/action/pets'
 import TextField from 'material-ui/TextField'
 import Checkbox from 'material-ui/Checkbox'
 import Paper from 'material-ui/Paper'
+import Divider from 'material-ui/Divider'
+import TimePicker from 'material-ui/TimePicker'
+import RaisedButton from 'material-ui/RaisedButton'
+import LandingContainer from '../landing-container'
 
 class ProfileSettings extends React.Component {
   constructor(props) {
@@ -24,7 +29,7 @@ class ProfileSettings extends React.Component {
         clean: '',
         hours: '',
       }
-    //smoke and hours need to be adjusted
+
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
@@ -51,76 +56,109 @@ class ProfileSettings extends React.Component {
       borderBottomColor: '#3AB08F',
     }
 
-    const style = {
-      height: 100,
-      width: 100,
-      margin: 20,
-      display: 'inline-block',
+    const formStyle = {
+      marginLeft: 20,
     }
 
     return (
       <div className="profile-form">
-        <div> Profile Edit </div>
+        <LandingContainer />
         <MuiThemeProvider>
-          <form onSubmit={this.handleSubmit}>
-            <p>
-              {this.state.username}
-            </p>
-            <TextField
-              type="username"
-              name="username"
-              value={this.state.username}
-              onChange={this.handleChange}
-              underlineFocusStyle={underlineFocus}
-            />
-            <p> Bio </p>
-            <TextField
-              type="text"
-              name="bio"
-              value={this.state.bio}
-              onChange={this.handleChange}
-              underlineFocusStyle={underlineFocus}
-              multiLine={true}
-              rows={4}
-            />
-            <p> Phone Number </p>
-            <TextField
-              type="text"
-              name="phone"
-              value={this.state.phone}
-              onChange={this.handleChange}
-              underlineFocusStyle={underlineFocus}
-            />
-            <p> Budget </p>
-            <TextField
-              type="text"
-              name="budget"
-              value={this.state.budget}
-              onChange={this.handleChange}
-              underlineFocusStyle={underlineFocus}
-            />
-            <p> Ocupation </p>
-            <TextField
-              type="text"
-              name="ocupation"
-              value={this.state.ocupation}
-              onChange={this.handleChange}
-              underlineFocusStyle={underlineFocus}
-            />
-            <p> Smoke </p>
+          <Paper zDepth={2}>
+            <form onSubmit={this.handleSubmit}>
+              <TextField
+                type="username"
+                name="username"
+                hintText={this.state.username}
+                value={this.state.username}
+                onChange={this.handleChange}
+                underlineShow={false}
+                style={formStyle}
+              />
+              <Divider />
+              <TextField
+                type="text"
+                name="bio"
+                value={this.state.bio}
+                onChange={this.handleChange}
+                underlineShow={false}
+                multiLine={true}
+                rows={4}
+                style={formStyle}
+                hintText="Enter a Bio"
+              />
+              <Divider />
+              <TextField
+                type="text"
+                name="phone"
+                value={this.state.phone}
+                onChange={this.handleChange}
+                underlineShow={false}
+                style={formStyle}
+                hintText="Phone Number"
+              />
+              <Divider />
+              <TextField
+                type="text"
+                name="budget"
+                value={this.state.budget}
+                onChange={this.handleChange}
+                underlineShow={false}
+                style={formStyle}
+                hintText="Budget"
+              />
+              <Divider />
+              <TextField
+                type="text"
+                name="ocupation"
+                value={this.state.ocupation}
+                onChange={this.handleChange}
+                underlineShow={false}
+                style={formStyle}
+                hintText="Occupation"
+              />
+              <Divider />
+              <Checkbox
+                checkedIcon={<Smoke />}
+                uncheckedIcon={<SmokeFree style={{ fill: 'red' }} />}
+                value={this.state.smoke}
+                onChange={this.handleChange}
+                iconStyle={{ fill: 'black' }}
+                style={{ margin: 20, float: 'left' }}
+                label="Smoker"
+                labelStyle={{ opacity: '.3' }}
+              />
+              <Checkbox
+                checkedIcon={<Pets />}
+                uncheckedIcon={<Pets style={{ fill: 'red ' }} />}
+                value={this.state.smoke}
+                onChange={this.handleChange}
+                iconStyle={{ fill: 'black' }}
+                style={{ margin: 20 }}
+                label="Pets"
+                labelStyle={{ opacity: '.3' }}
+              />
+              <Divider />
+              <TimePicker
+                hintText="Regular Hours"
+                style={formStyle}
+                dialogStyle={{
+                  backgroundColor: '#3AB08F',
+                }}
+                dialogBodyStyle={{
+                  color: 'black',
+                }}
+                underlineShow={false}
+              />
+              <Divider />
 
-            <Checkbox
-              checkedIcon={<SmokeFree />}
-              uncheckedIcon={<Smoke />}
-              value={this.state.smoke}
-              onChange={this.handleChange}
-              iconStyle={{ fill: 'black' }}
-            />
-
-            <p> Pets, clean, hours </p>
-
-            <button type="submit"> Submit </button>
-          </form>
+              <RaisedButton
+                style={{ margin: 20 }}
+                label="Submit"
+                type="submit"
+              />
+            </form>
+          </Paper>
         </MuiThemeProvider>
       </div>
     )
