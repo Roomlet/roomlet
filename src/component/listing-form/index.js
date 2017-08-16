@@ -13,10 +13,9 @@ class ListingForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: '',
+      title: '',
       verified: false,
       listingURL: '',
-      listingCreatedOn: '',
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -24,20 +23,16 @@ class ListingForm extends React.Component {
   }
 
   handleChange(e) {
-    if (e.target.name === 'name') this.setState({ name: e.target.value })
+    if (e.target.name === 'title') this.setState({ title: e.target.value })
     if (e.target.name === 'listingURL')
       this.setState({ listingURL: e.target.value })
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log('profile in listing form', this.props.profile)
-    this.state.listingCreatedOn = new Date()
-    this.state.verified = false
     this.props.listingCreate(this.state)
-
     this.setState({ listingURL: '' })
-    this.setState({ name: '' })
+    this.setState({ title: '' })
   }
 
   render() {
@@ -46,10 +41,10 @@ class ListingForm extends React.Component {
         <MuiThemeProvider>
           <form id="listing form" onSubmit={this.handleSubmit}>
             <TextField
-              name="name"
+              name="title"
               type="text"
-              placeholder="Name"
-              value={this.state.name}
+              placeholder="listing title"
+              value={this.state.title}
               onChange={this.handleChange}
               underlineShow={false}
             />
@@ -57,7 +52,7 @@ class ListingForm extends React.Component {
             <TextField
               name="listingURL"
               type="text"
-              placeholder="Listing URL"
+              placeholder="listing URL"
               value={this.state.listingURL}
               onChange={this.handleChange}
               underlineShow={false}
@@ -78,7 +73,6 @@ class ListingForm extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-  profile: state,
   listings: state.listings,
 })
 

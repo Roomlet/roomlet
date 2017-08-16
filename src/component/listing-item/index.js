@@ -17,7 +17,7 @@ class ListingItem extends React.Component {
           .map((listing, i) => {
             return (
               <li key={listing._id}>
-                name: {listing.name}
+                title: {listing.title}
                 <br />
                 url: {listing.listingURL}
                 <button

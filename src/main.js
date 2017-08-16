@@ -9,10 +9,17 @@ import { persistStore } from 'redux-persist'
 const store = storeCreate()
 persistStore(store)
 
-let Main = () => (
-  <Provider store={store}>
-    <App />
-  </Provider>
-)
+class Main extends React.Component {
+  componentDidUpdate() {
+    persistStore(store)
+  }
+  render() {
+    return (
+      <Provider store={store}>
+        <App />
+      </Provider>
+    )
+  }
+}
 
 ReactDom.render(<Main />, document.getElementById('root'))
