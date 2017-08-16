@@ -21,16 +21,20 @@ export const listingDelete = listing => ({
 })
 
 export const listingsFetchRequest = listing => (dispatch, getState) => {
-  return superagent.get(`${__API_URL__}/api/listings`).then(res => {
-    dispatch(listingsSet(res.body.data))
-    return res
-  })
+  return superagent
+    .get(`${__API_URL__}/api/listings`)
+    .set('Authorization', `Bearer ${listing.token}`)
+    .then(res => {
+      dispatch(listingsSet(res.body.data))
+      return res
+    })
 }
 
 export const listingCreateRequest = listing => (dispatch, getState) => {
   console.log('listing in listing actions lisitngCreateRequest', listing)
   return superagent
     .post(`${__API_URL__}/api/listings`)
+    .set('Authorization', `Bearer ${listing.token}`)
     .send(listing)
     .then(res => {
       console.log(res)

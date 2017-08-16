@@ -17,10 +17,15 @@ class ListingForm extends React.Component {
       verified: false,
       listingURL: '',
       listingCreatedOn: '',
+      token: '',
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentDidMount() {
+    this.setState({ token: this.props.token })
   }
 
   handleChange(e) {
@@ -31,13 +36,14 @@ class ListingForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log('profile in listing form', this.props.profile)
-    this.state.listingCreatedOn = new Date()
-    this.state.verified = false
+    console.log('token', this.props.token)
+    console.log('listing before submit', this.state)
+
     this.props.listingCreate(this.state)
 
     this.setState({ listingURL: '' })
     this.setState({ name: '' })
+    console.log('listing after submit', this.state)
   }
 
   render() {
@@ -78,6 +84,7 @@ class ListingForm extends React.Component {
 }
 
 export const mapStateToProps = state => ({
+  token: state.auth,
   profile: state,
   listings: state.listings,
 })
