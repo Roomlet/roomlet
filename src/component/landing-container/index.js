@@ -14,6 +14,7 @@ import IconButton from 'material-ui/IconButton'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import { Link } from 'react-router-dom'
 import * as util from '../../lib/util.js'
+import Avatar from 'material-ui/Avatar'
 
 class LandingContainer extends React.Component {
   constructor(props) {
@@ -63,6 +64,7 @@ class LandingContainer extends React.Component {
   }
 
   render() {
+    console.log(this.state)
     return (
       <div className="login-box">
         <MuiThemeProvider>
@@ -73,7 +75,7 @@ class LandingContainer extends React.Component {
               <IconMenu
                 iconButtonElement={
                   <IconButton iconStyle={{ fill: 'white' }}>
-                    <MoreVertIcon />
+                    <Avatar src={this.props.avatar} />
                   </IconButton>
                 }
                 anchorOrigin={{ horizontal: 'left', vertical: 'top' }}

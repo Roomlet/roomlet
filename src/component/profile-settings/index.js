@@ -41,8 +41,17 @@ class ProfileSettings extends React.Component {
   }
 
   handleChange(e) {
-    let { value, name } = e.target
-    this.setState({ [name]: value })
+    let { value, name, files } = e.target
+
+    if (name === 'avatar') {
+      // let { files } = e.target
+      let avatar = files[0]
+      this.setState({ [name]: value })
+      util
+        .photoToDataURL(avatar)
+        .then(preview => this.setState({ preview }))
+        .catch(console.error)
+    }
   }
 
   handleSubmit(e) {
@@ -58,7 +67,7 @@ class ProfileSettings extends React.Component {
     const formStyle = {
       marginLeft: 20,
     }
-
+    console.log(this.state)
     return (
       <div className="profile-form">
         <LandingContainer />
@@ -71,13 +80,13 @@ class ProfileSettings extends React.Component {
                 style={{ margin: 20 }}
               >
                 <div className="previewComponent">
-                  <form onSubmit={e => this._handleSubmit(e)}>
-                    <input
-                      type="file"
-                      onChange={this.handleChange}
-                      style={{ display: 'none' }}
-                    />
-                  </form>
+                  <input
+                    type="file"
+                    name="avatar"
+                    value={this.state.avatar}
+                    onChange={this.handleChange}
+                    style={{ display: 'none' }}
+                  />
                 </div>
               </RaisedButton>
               <TextField
@@ -182,6 +191,7 @@ class ProfileSettings extends React.Component {
 export const mapStateToProps = state => ({
   token: state.token,
   userId: state.userId,
+  avatar: state.preview,
 })
 
 export const mapDispatchToProps = dispatch => ({
