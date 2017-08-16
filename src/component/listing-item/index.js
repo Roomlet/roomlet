@@ -1,6 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import * as listingActions from '../../action/listing-actions.js'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { List, ListItem } from 'material-ui/List'
+import FloatingActionButton from 'material-ui/FloatingActionButton'
+import DeleteIcon from 'material-ui/svg-icons/action/delete-forever'
+import Paper from 'material-ui/Paper'
 
 class ListingItem extends React.Component {
   constructor(props) {
@@ -16,17 +21,29 @@ class ListingItem extends React.Component {
           .filter(listing => listing.verified === this.props.verified)
           .map((listing, i) => {
             return (
-              <li key={listing._id}>
-                name: {listing.name}
-                <br />
-                url: {listing.listingURL}
-                <button
-                  onClick={() => this.props.listingDelete(listing)}
-                  className="listing-delete"
-                >
-                  x
-                </button>
-              </li>
+
+              <MuiThemeProvider>
+                <Paper zDepth={2} style={{ marginTop: 10 }}>
+                  <List style={{ textAlign: 'left' }}>
+                    <ListItem
+                      key={listing._id}
+                      primaryText={listing.name}
+                      secondaryText={listing.listingURL}
+                      rightIconButton={
+                        <FloatingActionButton
+                          onClick={() => this.props.listingDelete(listing)}
+                          mini={true}
+                          backgroundColor="red"
+                          style={{ marginRight: 20 }}
+                        >
+                          <DeleteIcon />
+                        </FloatingActionButton>
+                      }
+                    />
+                  </List>
+                </Paper>
+              </MuiThemeProvider>
+
             )
           })}
       </div>

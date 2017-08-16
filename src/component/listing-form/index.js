@@ -13,10 +13,9 @@ class ListingForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
-      name: '',
+      title: '',
       verified: false,
       listingURL: '',
-      listingCreatedOn: '',
       token: '',
     }
 
@@ -29,55 +28,59 @@ class ListingForm extends React.Component {
   }
 
   handleChange(e) {
-    if (e.target.name === 'name') this.setState({ name: e.target.value })
+    if (e.target.name === 'title') this.setState({ title: e.target.value })
     if (e.target.name === 'listingURL')
       this.setState({ listingURL: e.target.value })
   }
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log('token', this.props.token)
-    console.log('listing before submit', this.state)
-
     this.props.listingCreate(this.state)
-
     this.setState({ listingURL: '' })
-    this.setState({ name: '' })
-    console.log('listing after submit', this.state)
+    this.setState({ title: '' })
   }
 
   render() {
     return (
-      <div style={{ textAlign: 'center' }}>
+      <div style={{ textAlign: 'left' }}>
         <MuiThemeProvider>
-          <form id="listing form" onSubmit={this.handleSubmit}>
-            <TextField
-              name="name"
-              type="text"
-              placeholder="Name"
-              value={this.state.name}
-              onChange={this.handleChange}
-              underlineShow={false}
-            />
-            <Divider />
-            <TextField
-              name="listingURL"
-              type="text"
-              placeholder="Listing URL"
-              value={this.state.listingURL}
-              onChange={this.handleChange}
-              underlineShow={false}
-            />
-            <Divider />
-            <RaisedButton type="submit" label="Add Listing" fullWidth={true} />
-          </form>
+
+          <Paper zDepth={2}>
+            <form id="listing form" onSubmit={this.handleSubmit}>
+              <TextField
+                name="name"
+                type="text"
+                placeholder="Name"
+                value={this.state.name}
+                onChange={this.handleChange}
+                underlineShow={false}
+                style={{ marginLeft: 20 }}
+              />
+              <Divider />
+              <TextField
+                name="listingURL"
+                type="text"
+                placeholder="Listing URL"
+                value={this.state.listingURL}
+                onChange={this.handleChange}
+                underlineShow={false}
+                style={{ marginLeft: 20 }}
+              />
+              <Divider />
+              <RaisedButton
+                type="submit"
+                label="Add Listing"
+                fullWidth={true}
+              />
+            </form>
+          </Paper>
         </MuiThemeProvider>
-        <ul>
+        <div>
           <ListingItem listings={this.props.listings} verified={false} />
-        </ul>
-        <ul>
+        </div>
+        <div>
           <ListingItem listings={this.props.listings} verified={true} />
-        </ul>
+        </div>
       </div>
     )
   }
@@ -85,7 +88,6 @@ class ListingForm extends React.Component {
 
 export const mapStateToProps = state => ({
   token: state.auth,
-  profile: state,
   listings: state.listings,
 })
 

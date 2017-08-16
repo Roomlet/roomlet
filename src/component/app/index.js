@@ -6,6 +6,7 @@ import DashboardContainer from '../dashboard-container'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import AppBar from 'material-ui/AppBar'
 import RaisedButton from 'material-ui/RaisedButton'
+import AdminDashboard from '../admin-dashboard'
 
 class App extends React.Component {
   render() {
@@ -16,6 +17,7 @@ class App extends React.Component {
             <Route exact path="/" component={LandingContainer} />
             <Route exact path="/settings" component={ProfileSettings} />
             <Route exact path="/dashboard" component={DashboardContainer} />
+            <Route exact path="/admin" component={AdminDashboard} />
           </div>
         </BrowserRouter>
       </div>
