@@ -63,7 +63,7 @@ class ListingForm extends React.Component {
               underlineShow={false}
             />
             <Divider />
-            <RaisedButton label="Add Listing" fullWidth={true} />
+            <RaisedButton type="submit" label="Add Listing" fullWidth={true} />
           </form>
         </MuiThemeProvider>
         <ul>
