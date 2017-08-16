@@ -14,6 +14,7 @@ import RaisedButton from 'material-ui/RaisedButton'
 import LandingContainer from '../landing-container'
 import * as util from '../../lib/util.js'
 import uuid from 'uuid/v1'
+import Avatar from 'material-ui/Avatar'
 
 class ProfileSettings extends React.Component {
   constructor(props) {
@@ -64,13 +65,21 @@ class ProfileSettings extends React.Component {
         <MuiThemeProvider>
           <Paper zDepth={2}>
             <form onSubmit={this.handleSubmit}>
-              <input
-                type="file"
-                name="avatar"
-                value={this.state.avatar}
-                onChange={this.handleChange}
-              />
-              <img src={this.state.preview} />
+              <RaisedButton
+                containerElement="label"
+                label="Upload Photo"
+                style={{ margin: 20 }}
+              >
+                <div className="previewComponent">
+                  <form onSubmit={e => this._handleSubmit(e)}>
+                    <input
+                      type="file"
+                      onChange={this.handleChange}
+                      style={{ display: 'none' }}
+                    />
+                  </form>
+                </div>
+              </RaisedButton>
               <TextField
                 type="username"
                 name="username"
