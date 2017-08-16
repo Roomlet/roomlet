@@ -4,6 +4,7 @@ export default (state = [], action) => {
   case 'LISTINGS_SET':
     return payload
   case 'LISTING_CREATE':
+    payload.userId = state.user_id
     return [payload, ...state]
   case 'LISTING_UPDATE':
     return state.map(item => (item._id === payload._id ? payload : item))

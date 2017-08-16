@@ -1,6 +1,11 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { listingCreate } from '../../action/listing-actions'
+import ListingItem from '../listing-item'
+import { listingCreateRequest } from '../../action/listing-actions'
+
+let renderIf = (t, c) => (t ? c : undefined)
+
+let listingDoesExist = false
 
 class ListingForm extends React.Component {
   constructor(props) {
@@ -23,13 +28,14 @@ class ListingForm extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-
+    console.log('profile in listing form', this.props.profile)
     this.state.listingCreatedOn = new Date()
 
     this.props.listingCreate(this.state)
 
     this.setState({ listingURL: '' })
     this.setState({ name: '' })
+    listingDoesExist = true
   }
 
   render() {
@@ -52,15 +58,24 @@ class ListingForm extends React.Component {
           />
           <button>add listing</button>
         </form>
+        <ul id="unverified-listings">
+          {renderIf(
+            listingDoesExist,
+            <ListingItem listings={this.props.listings} />
+          )}
+        </ul>
       </div>
     )
   }
 }
 
-export const mapStateToProps = state => ({})
+export const mapStateToProps = state => ({
+  profile: state,
+  listings: state.listings,
+})
 
 export const mapDispatchToProps = dispatch => ({
-  listingCreate: listing => dispatch(listingCreate(listing)),
+  listingCreate: listing => dispatch(listingCreateRequest(listing)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ListingForm)
