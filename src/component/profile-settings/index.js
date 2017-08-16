@@ -18,7 +18,6 @@ import uuid from 'uuid/v1'
 class ProfileSettings extends React.Component {
   constructor(props) {
     super(props)
-
     this.state = props.profile
       ? { ...props.profile }
       : {
@@ -27,7 +26,7 @@ class ProfileSettings extends React.Component {
         preview: '',
         bio: '',
         budget: '',
-        ocupation: '',
+        occupation: '',
         smoke: '',
         pets: '',
         clean: '',
@@ -47,10 +46,7 @@ class ProfileSettings extends React.Component {
 
   handleSubmit(e) {
     e.preventDefault()
-    console.log('profile submit')
     this.props.profileUpdate(this.state)
-    console.log('profile submit after')
-    console.log(this.props, 'this.props!!!')
   }
 
   render() {
@@ -99,11 +95,11 @@ class ProfileSettings extends React.Component {
             value={this.state.budget}
             onChange={this.handleChange}
           />
-          <p> Ocupation </p>
+          <p> Occupation </p>
           <input
             type="text"
-            name="ocupation"
-            value={this.state.ocupation}
+            name="occupation"
+            value={this.state.occupation}
             onChange={this.handleChange}
           />
           <p> Smoke </p>

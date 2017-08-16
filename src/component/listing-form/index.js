@@ -1,20 +1,17 @@
 import React from 'react'
 import { connect } from 'react-redux'
-<<<<<<< HEAD
 import { listingCreate } from '../../action/listing-actions.js'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import Paper from 'material-ui/Paper'
 import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import Divider from 'material-ui/Divider'
-=======
 import ListingItem from '../listing-item'
 import { listingCreateRequest } from '../../action/listing-actions'
 
 let renderIf = (t, c) => (t ? c : undefined)
 
 let listingDoesExist = false
->>>>>>> 3cd8233b5530bbeb33ac40d4295fc01cc27aacfe
 
 class ListingForm extends React.Component {
   constructor(props) {

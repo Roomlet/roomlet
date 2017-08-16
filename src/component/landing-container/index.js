@@ -7,6 +7,7 @@ import { login, logout } from '../../action/auth-actions.js'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import RaisedButton from 'material-ui/RaisedButton'
 import AppBar from 'material-ui/AppBar'
+import { profileUpdate } from '../../action/profile-actions.js'
 
 class LandingContainer extends React.Component {
   constructor(props) {
@@ -40,8 +41,10 @@ class LandingContainer extends React.Component {
       this.lock.getUserInfo(authResult.accessToken, (err, profile) => {
         if (err) return new Error('failed to authenticate')
         console.log('PROFILE', profile)
-        this.props.login(authResult.accessToken)
         this.props.storeId(profile.user_id)
+        this.props.login(authResult.accessToken)
+        if (profile.user_metadata)
+          this.props.profileUpdate(profile.user_metadata.profile)
 
         this.state.signUp
           ? this.props.history.push('/settings')
@@ -73,9 +76,10 @@ class LandingContainer extends React.Component {
 export const mapStateToProps = state => ({})
 
 export const mapDispatchToProps = dispatch => ({
+  logout: () => dispatch(logout()),
   storeId: id => dispatch(storeId(id)),
   login: token => dispatch(login(token)),
-  logout: () => dispatch(logout()),
+  profileUpdate: profile => dispatch(profileUpdate(profile)),
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(LandingContainer)
