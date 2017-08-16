@@ -57,58 +57,6 @@ class ProfileSettings extends React.Component {
     const formStyle = {
       marginLeft: 20,
     }
-        <form onSubmit={this.handleSubmit}>
-          <p>
-            {this.state.username}
-          </p>
-          <input
-            type="username"
-            name="username"
-            value={this.state.username}
-            onChange={this.handleChange}
-          />
-          <input
-            type="file"
-            name="avatar"
-            value={this.state.avatar}
-            onChange={this.handleChange}
-          />
-          <img src={this.state.preview} />
-          <p> Bio </p>
-          <textarea
-            type="text"
-            name="bio"
-            value={this.state.bio}
-            onChange={this.handleChange}
-          />
-          <p> Phone Number </p>
-          <input
-            type="text"
-            name="phone"
-            value={this.state.phone}
-            onChange={this.handleChange}
-          />
-          <p> Budget </p>
-          <input
-            type="text"
-            name="budget"
-            value={this.state.budget}
-            onChange={this.handleChange}
-          />
-          <p> Occupation </p>
-          <input
-            type="text"
-            name="occupation"
-            value={this.state.occupation}
-            onChange={this.handleChange}
-          />
-          <p> Smoke </p>
-          <input
-            type="checkbox"
-            name="smoke"
-            value={this.state.smoke}
-            onChange={this.handleChange}
-          />
 
     return (
       <div className="profile-form">
@@ -116,6 +64,13 @@ class ProfileSettings extends React.Component {
         <MuiThemeProvider>
           <Paper zDepth={2}>
             <form onSubmit={this.handleSubmit}>
+              <input
+                type="file"
+                name="avatar"
+                value={this.state.avatar}
+                onChange={this.handleChange}
+              />
+              <img src={this.state.preview} />
               <TextField
                 type="username"
                 name="username"

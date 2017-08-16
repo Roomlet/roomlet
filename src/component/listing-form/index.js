@@ -46,24 +46,30 @@ class ListingForm extends React.Component {
 
   render() {
     return (
-      <div>
-        <form id="listing form" onSubmit={this.handleSubmit}>
-          <input
-            name="name"
-            type="text"
-            placeholder="Name"
-            value={this.state.name}
-            onChange={this.handleChange}
-          />
-          <input
-            name="listingURL"
-            type="text"
-            placeholder="Listing URL"
-            value={this.state.listingURL}
-            onChange={this.handleChange}
-          />
-          <button>add listing</button>
-        </form>
+      <div style={{ textAlign: 'center' }}>
+        <MuiThemeProvider>
+          <form id="listing form" onSubmit={this.handleSubmit}>
+            <TextField
+              name="name"
+              type="text"
+              placeholder="Name"
+              value={this.state.name}
+              onChange={this.handleChange}
+              underlineShow={false}
+            />
+            <Divider />
+            <TextField
+              name="listingURL"
+              type="text"
+              placeholder="Listing URL"
+              value={this.state.listingURL}
+              onChange={this.handleChange}
+              underlineShow={false}
+            />
+            <Divider />
+            <RaisedButton label="Add Listing" fullWidth={true} />
+          </form>
+        </MuiThemeProvider>
         <ul id="unverified-listings">
           {renderIf(
             listingDoesExist,
