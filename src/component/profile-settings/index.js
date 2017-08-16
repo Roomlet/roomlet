@@ -7,6 +7,7 @@ import uuid from 'uuid/v1'
 class ProfileSettings extends React.Component {
   constructor(props) {
     super(props)
+
     this.state = props.profile
       ? { ...props.profile }
       : {
@@ -29,19 +30,7 @@ class ProfileSettings extends React.Component {
   }
 
   handleChange(e) {
-    let { value, name, files } = e.target
-
-    if (name === 'avatar') {
-      // let { files } = e.target
-      let avatar = files[0]
-      this.setState({ [name]: value })
-      util
-        .photoToDataURL(avatar)
-        .then(preview => this.setState({ preview }))
-        .catch(console.error)
-    }
-
-    console.log(this.state)
+    let { value, name } = e.target
     this.setState({ [name]: value })
   }
 

@@ -5,6 +5,12 @@
   "repository": "https://github.com/Roomlet/roomlet.git",
   "author": "Kyle Aardal <aardal.kyle@gmail.com>",
   "license": "MIT",
+  "jest": {
+    "globals": {
+      "__DEBUG__": true,
+      "__API_URL__": "http://localhost:3000"
+    }
+  },
   "scripts": {
     "test": "jest",
     "lint": "eslint .",
