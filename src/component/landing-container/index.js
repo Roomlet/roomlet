@@ -8,6 +8,12 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import RaisedButton from 'material-ui/RaisedButton'
 import AppBar from 'material-ui/AppBar'
 import { profileUpdate } from '../../action/profile-actions.js'
+import IconMenu from 'material-ui/IconMenu'
+import MenuItem from 'material-ui/MenuItem'
+import IconButton from 'material-ui/IconButton'
+import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
+import { Link } from 'react-router-dom'
+import * as util from '../../lib/util.js'
 
 class LandingContainer extends React.Component {
   constructor(props) {
@@ -21,6 +27,13 @@ class LandingContainer extends React.Component {
   componentWillMount() {
     const options = {
       theme: {
+        oidcConformant: true,
+        auth: {
+          audience: 'https://roomletapi/',
+          params: {
+            scope: 'openid profile read:listing',
+          },
+        },
         logo: '../../../roomlet.png',
         primaryColor: '#3AB08F',
       },
@@ -63,8 +76,28 @@ class LandingContainer extends React.Component {
           <AppBar
             title="Roomlet"
             style={{ backgroundColor: '#3AB08F', fontFamily: 'Libre Franklin' }}
+            iconElementLeft={
+              <IconMenu
+                iconButtonElement={
+                  <IconButton iconStyle={{ fill: 'white' }}>
+                    <MoreVertIcon />
+                  </IconButton>
+                }
+                anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
+                targetOrigin={{ horizontal: 'left', vertical: 'top' }}
+              >
+                <MenuItem
+                  primaryText="Dashboard"
+                  containerElement={<Link to="/dashboard" />}
+                />
+                <MenuItem
+                  primaryText="Profile Settings"
+                  containerElement={<Link to="/settings" />}
+                />
+              </IconMenu>
+            }
             iconElementRight={
-              <RaisedButton onClick={this.showLock} label="Sign Up" />
+              <RaisedButton onClick={this.showLock} label="Signup" />
             }
           />
         </MuiThemeProvider>

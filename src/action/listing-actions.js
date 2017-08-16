@@ -25,12 +25,20 @@ export const listingsFetchRequest = listing => (dispatch, getState) => {
     dispatch(listingsSet(res.body.data))
     return res
   })
+  return superagent
+    .get(`${__API_URL__}/api/listings`)
+    .set('Authorization', `Bearer ${listing.token}`)
+    .then(res => {
+      dispatch(listingsSet(res.body.data))
+      return res
+    })
 }
 
 export const listingCreateRequest = listing => (dispatch, getState) => {
   console.log('listing in listing actions lisitngCreateRequest', listing)
   return superagent
     .post(`${__API_URL__}/api/listings`)
+    .set('Authorization', `Bearer ${listing.token}`)
     .send(listing)
     .then(res => {
       console.log(res)
@@ -42,6 +50,7 @@ export const listingCreateRequest = listing => (dispatch, getState) => {
 export const listingDeleteRequest = listing => (dispatch, getState) => {
   return superagent
     .delete(`${__API_URL__}/api/listings/${listing._id}`)
+    .set('Authorization', `Bearer ${listing.token}`)
     .then(res => {
       dispatch(listingDelete(listing))
       return res
@@ -51,6 +60,7 @@ export const listingDeleteRequest = listing => (dispatch, getState) => {
 export const listingUpdateRequest = listing => (dispatch, getState) => {
   return superagent
     .put(`${__API_URL__}/api/listings/${listing._id}`)
+    .set('Authorization', `Bearer ${listing.token}`)
     .send(listing)
     .then(res => {
       dispatch(listingUpdate(res.body))
