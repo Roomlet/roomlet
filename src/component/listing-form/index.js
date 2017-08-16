@@ -3,10 +3,6 @@ import { connect } from 'react-redux'
 import ListingItem from '../listing-item'
 import { listingCreateRequest } from '../../action/listing-actions'
 
-let renderIf = (t, c) => (t ? c : undefined)
-
-let listingDoesExist = false
-
 class ListingForm extends React.Component {
   constructor(props) {
     super(props)
@@ -35,7 +31,6 @@ class ListingForm extends React.Component {
 
     this.setState({ listingURL: '' })
     this.setState({ name: '' })
-    listingDoesExist = true
   }
 
   render() {
@@ -59,10 +54,7 @@ class ListingForm extends React.Component {
           <button>add listing</button>
         </form>
         <ul id="unverified-listings">
-          {renderIf(
-            listingDoesExist,
-            <ListingItem listings={this.props.listings} />
-          )}
+          <ListingItem listings={this.props.listings} />
         </ul>
       </div>
     )

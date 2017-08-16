@@ -7,7 +7,7 @@ class ListingItem extends React.Component {
     super(props)
     this.state = {}
   }
-
+  componentWillMount() {}
   render() {
     console.log(this.props.listings)
     return (
