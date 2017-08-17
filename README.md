@@ -6,6 +6,8 @@
 ##About the Team
 
 ![alt text](https://avatars3.githubusercontent.com/u/20732104?v=4&s=128 "Logo Title Text 1")
+
+
 #Kyle Aardal
 ![alt text](https://avatars3.githubusercontent.com/u/26240188?v=4&s=128 "Logo Title Text 1")
 #Stephanie Dover
@@ -72,3 +74,5 @@ sudo apt-get install nodejs npm
 ### Refer to Yarn documentation specific to Mac OS, Windows, Linux, and other alternatives !
 
 [Yarn Homepage](https://yarnpkg.com/lang/en/docs/install/#mac-tab)
+
+## Install Mongo DB
