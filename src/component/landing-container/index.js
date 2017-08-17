@@ -53,8 +53,8 @@ class LandingContainer extends React.Component {
     this.lock.on('authenticated', authResult => {
       this.lock.getUserInfo(authResult.accessToken, (err, profile) => {
         if (err) return new Error('failed to authenticate')
-        console.log('PROFILE', profile)
-        this.props.storeId(profile.user_id)
+        console.log('PROFILE', profile.sub)
+        this.props.storeId(profile.sub)
         this.props.login(authResult.accessToken)
         if (profile.user_metadata)
           this.props.profileUpdate(profile.user_metadata.profile)
