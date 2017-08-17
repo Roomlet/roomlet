@@ -70,7 +70,7 @@ class ProfileSettings extends React.Component {
     console.log(this.state)
     return (
       <div className="profile-form">
-        <LandingContainer />
+        <LandingContainer avatar={this.state.preview} />
         <MuiThemeProvider>
           <Paper zDepth={2}>
             <form onSubmit={this.handleSubmit}>
@@ -191,7 +191,6 @@ class ProfileSettings extends React.Component {
 export const mapStateToProps = state => ({
   token: state.token,
   userId: state.userId,
-  avatar: state.preview,
 })
 
 export const mapDispatchToProps = dispatch => ({

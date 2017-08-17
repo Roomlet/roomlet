@@ -75,7 +75,11 @@ class LandingContainer extends React.Component {
               <IconMenu
                 iconButtonElement={
                   <IconButton iconStyle={{ fill: 'white' }}>
-                    <Avatar src={this.props.avatar} />
+                    <Avatar
+                      src={this.props.avatar}
+                      size={32}
+                      style={{ verticalAlign: 'middle' }}
+                    />
                   </IconButton>
                 }
                 anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
@@ -92,7 +96,11 @@ class LandingContainer extends React.Component {
               </IconMenu>
             }
             iconElementRight={
-              <RaisedButton onClick={this.showLock} label="Signup" />
+              <RaisedButton
+                onClick={this.showLock}
+                label="Signup"
+                style={{ verticalAlign: 'middle', height: '80%' }}
+              />
             }
           />
         </MuiThemeProvider>
