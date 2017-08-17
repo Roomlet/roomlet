@@ -14,9 +14,14 @@ class AdminListingsItem extends React.Component {
       nonSmoking: this.props.listing.nonSmoking,
       parkingSpaces: this.props.listing.parkingSpaces,
       comment: this.props.listing.comment,
+      token: null,
     }
     this.handleEditListing = this.handleEditListing.bind(this)
     this.handleChange = this.handleChange.bind(this)
+  }
+
+  componentDidMount() {
+    this.setState({ token: this.props.token })
   }
 
   handleChange(e) {

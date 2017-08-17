@@ -26,14 +26,14 @@ class LandingContainer extends React.Component {
 
   componentWillMount() {
     const options = {
-      theme: {
-        oidcConformant: true,
-        auth: {
-          audience: 'https://roomletapi/',
-          params: {
-            scope: 'openid profile read:listing',
-          },
+      oidcConformant: true,
+      auth: {
+        audience: 'https://roomletapi/',
+        params: {
+          scope: 'openid profile read:listing',
         },
+      },
+      theme: {
         logo: '../../../roomlet.png',
         primaryColor: '#3AB08F',
       },

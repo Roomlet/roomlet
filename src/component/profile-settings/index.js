@@ -36,8 +36,9 @@ class ProfileSettings extends React.Component {
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
-  componentWillReceiveProps(props) {
-    if (props.profile) this.setState(props.profile)
+
+  componentWillMount() {
+    if (this.props.profile) this.setState(this.props.profile)
   }
 
   handleChange(e) {
@@ -48,6 +49,7 @@ class ProfileSettings extends React.Component {
   handleSubmit(e) {
     e.preventDefault()
     this.props.profileUpdate(this.state)
+    this.props.history.push('/dashboard')
   }
 
   render() {
@@ -182,6 +184,7 @@ class ProfileSettings extends React.Component {
 export const mapStateToProps = state => ({
   token: state.token,
   userId: state.userId,
+  profile: state.profile,
 })
 
 export const mapDispatchToProps = dispatch => ({

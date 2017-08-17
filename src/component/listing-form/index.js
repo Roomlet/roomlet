@@ -48,7 +48,7 @@ class ListingForm extends React.Component {
           <Paper zDepth={2}>
             <form id="listing form" onSubmit={this.handleSubmit}>
               <TextField
-                name="name"
+                name="title"
                 type="text"
                 placeholder="Name"
                 value={this.state.name}
