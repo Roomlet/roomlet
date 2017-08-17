@@ -12,7 +12,6 @@ class AdminDashboard extends React.Component {
   }
 
   componentDidMount() {
-    console.log('admin will mount', this.props.token)
     this.props.listingsFetchRequest({ token: this.props.token })
   }
 
