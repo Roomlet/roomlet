@@ -37,6 +37,7 @@ export const listingCreateRequest = listing => (dispatch, getState) => {
     .set('Authorization', `Bearer ${listing.token}`)
     .send(listing)
     .then(res => {
+      console.log(res)
       dispatch(listingCreate(res.body))
       return res
     })
