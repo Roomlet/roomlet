@@ -1,10 +1,9 @@
 import React from 'react'
-import { mount, shallow } from 'enzyme'
-import superagent from 'superagent'
-// import mocker from 'superagent-mocker'
-import appStoreCreate from '../lib/store-create.js'
-import App from '../component/app'
 import ReactDOM from 'react-dom'
+import App from '../component/app'
+import superagent from 'superagent'
+import { mount, shallow } from 'enzyme'
+import appStoreCreate from '../lib/store-create.js'
 
 describe('App', () => {
   it('renders without crashing', () => {
