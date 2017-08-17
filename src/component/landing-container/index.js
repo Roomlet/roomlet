@@ -7,7 +7,10 @@ import { login, logout } from '../../action/auth-actions.js'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import RaisedButton from 'material-ui/RaisedButton'
 import AppBar from 'material-ui/AppBar'
-import { profileUpdate } from '../../action/profile-actions.js'
+import {
+  profileUpdate,
+  profileFetchRequest,
+} from '../../action/profile-actions.js'
 import IconMenu from 'material-ui/IconMenu'
 import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
@@ -53,12 +56,9 @@ class LandingContainer extends React.Component {
     this.lock.on('authenticated', authResult => {
       this.lock.getUserInfo(authResult.accessToken, (err, profile) => {
         if (err) return new Error('failed to authenticate')
-        console.log('PROFILE', profile.sub)
         this.props.storeId(profile.sub)
         this.props.login(authResult.accessToken)
-        if (profile.user_metadata)
-          this.props.profileUpdate(profile.user_metadata.profile)
-
+        this.props.profileFetch()
         this.state.signUp
           ? this.props.history.push('/settings')
           : this.props.history.push('/dashboard')
@@ -112,6 +112,7 @@ export const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
   storeId: id => dispatch(storeId(id)),
   login: token => dispatch(login(token)),
+  profileFetch: () => dispatch(profileFetchRequest()),
   profileUpdate: profile => dispatch(profileUpdate(profile)),
 })
 
