@@ -24,7 +24,7 @@ Most of my experience is in the financial services industry. I am currently work
 
 # NodeJS installation
 
-##NodeJS for Mac OS
+## NodeJS for Mac OS
 
 ### Use brew to install nodeJS locally
 
@@ -40,12 +40,12 @@ brew install node
 
 [NodeJS documentation](https://nodejs.org/en/download/package-manager/)
 
-##NodeJS for Windows
+## NodeJS for Windows
 
 ##### 1. Install chocolatey... please visit the brew homepage...
   [chocolatey Homepage](https://chocolatey.org/)
 
-# 1. Install NodeJS using Chocolatey with several commands...
+## 1. Install NodeJS using Chocolatey with several commands...
 ```
 cinst nodejs
 # or for full install with npm
@@ -56,31 +56,19 @@ cinst nodejs.install
 [NodeJS documentation](https://nodejs.org/en/download/package-manager/)
 
 
-##NodeJS for Debian, Ubuntu, Linux Mint
+## NodeJS for Debian, Ubuntu, Linux Mint
 
 ```
 sudo apt-get install nodejs npm
 ```
 
+#### Refer to Windows section of NodeJS documentation for further reference !
+
+[NodeJS documentation](https://nodejs.org/en/download/package-manager/)
 
 
+## Install Yarn
 
-##### 1. Install brew... please visit the brew homepage...
-  ```
-  https://brew.sh/
-  ```
+### Refer to Yarn documentation specific to Mac OS, Windows, Linux, and other alternatives !
 
-##### 2. Install yarn... please visit the yarn installation homepage to configure yarn to your personal specifications!
-  ```
-  https://yarnpkg.com/lang/en/docs/install/
-  ```
-
-
-#Windows
-
-# Use Chocolatey to install yarn locally
-
-##### 1. Install Chocolatey... please visit the Chocolatey homepage...
-  ```
-  https://chocolatey.org/
-  ```
+[Yarn Homepage](https://yarnpkg.com/lang/en/docs/install/#mac-tab)
