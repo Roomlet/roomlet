@@ -17,7 +17,6 @@ class AdminListingsItem extends React.Component {
     }
     this.handleEditListing = this.handleEditListing.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange(e) {
@@ -29,12 +28,6 @@ class AdminListingsItem extends React.Component {
       this.setState({ verified: e.target.value })
     let { value, name } = e.target
     this.setState({ [name]: value })
-  }
-
-  handleSubmit(e) {
-    e.preventDefault()
-    this.setState({ updating: false })
-    this.props.listingUpdate(this.props.listing)
   }
 
   handleEditListing() {
