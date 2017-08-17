@@ -8,7 +8,6 @@ import AppBar from 'material-ui/AppBar'
 import RaisedButton from 'material-ui/RaisedButton'
 import AdminDashboard from '../admin-dashboard'
 
-
 class App extends React.Component {
   render() {
     return (

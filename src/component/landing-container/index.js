@@ -15,12 +15,21 @@ import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import { Link } from 'react-router-dom'
 import * as util from '../../lib/util.js'
 import Avatar from 'material-ui/Avatar'
+import {
+  Card,
+  CardActions,
+  CardHeader,
+  CardMedia,
+  CardTitle,
+  CardText,
+} from 'material-ui/Card'
 
 class LandingContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       signUp: false,
+      landing: true,
     }
     this.showLock = this.showLock.bind(this)
   }
@@ -49,7 +58,9 @@ class LandingContainer extends React.Component {
       options
     )
 
-    this.lock.on('signup submit', () => this.setState({ signUp: true }))
+    this.lock.on('signup submit', () =>
+      this.setState({ signUp: true, landing: false })
+    )
 
     this.lock.on('authenticated', authResult => {
       this.lock.getUserInfo(authResult.accessToken, (err, profile) => {
@@ -111,6 +122,18 @@ class LandingContainer extends React.Component {
             }
           />
         </MuiThemeProvider>
+        <div>
+          {util.renderIf(
+            this.state.landing,
+            <MuiThemeProvider>
+              <Card>
+                <CardMedia>
+                  <img src="../../../bay.jpeg" />
+                </CardMedia>
+              </Card>
+            </MuiThemeProvider>
+          )}
+        </div>
       </div>
     )
   }
