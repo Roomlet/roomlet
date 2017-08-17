@@ -7,7 +7,7 @@ import {
   listingCreateRequest,
   listingUpdateRequest,
   listingDeleteRequest,
-} from '../action/listing-actions.js'
+} from '../../action/listing-actions.js'
 
 describe('testing listing actions', () => {
   let mockState = [

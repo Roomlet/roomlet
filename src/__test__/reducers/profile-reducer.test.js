@@ -1,4 +1,4 @@
-import profileReducer from '../reducer/profile.js'
+import profileReducer from '../../reducer/profile.js'
 
 describe('testing profile reducer', () => {
   let mockState = []

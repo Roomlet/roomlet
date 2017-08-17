@@ -1,4 +1,4 @@
-import authReducer from '../reducer/auth.js'
+import authReducer from '../../reducer/auth.js'
 
 describe('testing auth reducer', () => {
   test('inital state should be null', () => {

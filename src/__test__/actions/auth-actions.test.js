@@ -1,4 +1,4 @@
-import { login, logout } from '../action/auth-actions.js'
+import { login, logout } from '../../action/auth-actions.js'
 
 describe('testing auth actions', () => {
   test('login returns LOGIN action and auth token', () => {

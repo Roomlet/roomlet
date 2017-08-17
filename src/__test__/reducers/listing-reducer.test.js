@@ -1,4 +1,4 @@
-import listingReducer from '../reducer/listing.js'
+import listingReducer from '../../reducer/listing.js'
 
 describe('testing listing reducer', () => {
   let mockState = [
