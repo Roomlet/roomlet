@@ -11,8 +11,9 @@ class AdminDashboard extends React.Component {
     this.state = {}
   }
 
-  componentWillMount() {
-    this.props.listingsFetchRequest()
+  componentDidMount() {
+    console.log('admin will mount', this.props.token)
+    this.props.listingsFetchRequest({ token: this.props.token })
   }
 
   render() {
@@ -24,6 +25,7 @@ class AdminDashboard extends React.Component {
             return (
               <li key={listing._id}>
                 <AdminListingsItem
+                  token={this.props.token}
                   listing={listing}
                   listingUpdate={this.props.listingUpdate}
                   listingDelete={this.props.listingDelete}
@@ -38,12 +40,13 @@ class AdminDashboard extends React.Component {
 }
 
 const mapStateToProps = state => ({
+  token: state.auth,
   listings: state.listings,
 })
 
 const mapDispatchToProps = (dispatch, getState) => ({
-  listingsFetchRequest: () => {
-    dispatch(listingActions.listingsFetchRequest())
+  listingsFetchRequest: listing => {
+    dispatch(listingActions.listingsFetchRequest(listing))
   },
   listingDelete: listing => {
     dispatch(listingActions.listingDeleteRequest(listing))
