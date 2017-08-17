@@ -6,7 +6,9 @@
   "author": "Kyle Aardal <aardal.kyle@gmail.com>",
   "license": "MIT",
   "jest": {
-    "setupFiles": ["jest-localstorage-mock"],
+    "setupFiles": [
+      "jest-localstorage-mock"
+    ],
     "globals": {
       "__DEBUG__": true,
       "__API_URL__": "http://localhost:3000",
@@ -19,6 +21,7 @@
     "test": "jest",
     "lint": "eslint .",
     "build": "webpack",
+    "start": "webpack",
     "watch": "webpack-dev-server --inline --hot"
   },
   "dependencies": {
