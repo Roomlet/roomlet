@@ -6,9 +6,13 @@
   "author": "Kyle Aardal <aardal.kyle@gmail.com>",
   "license": "MIT",
   "jest": {
+    "setupFiles": ["jest-localstorage-mock"],
     "globals": {
       "__DEBUG__": true,
-      "__API_URL__": "http://localhost:3000"
+      "__API_URL__": "http://localhost:3000",
+      "process.env": {
+        "NODE_ENV": "testing"
+      }
     }
   },
   "scripts": {
@@ -58,5 +62,8 @@
     "validator": "^8.0.0",
     "webpack": "^3.3.0",
     "webpack-dev-server": "^2.5.1"
+  },
+  "devDependencies": {
+    "jest-localstorage-mock": "^1.2.0"
   }
 }
