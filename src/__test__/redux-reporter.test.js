@@ -1,5 +1,5 @@
-import { createStore, applyMiddleware } from 'redux'
 import reporter from '../lib/redux-reporter.js'
+import { createStore, applyMiddleware } from 'redux'
 
 let mockStoreCreate = () => {
   let reducer = (state = 0, action) => {

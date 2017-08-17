@@ -18,7 +18,6 @@ class AdminListingsItem extends React.Component {
     }
     this.handleEditListing = this.handleEditListing.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    //this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   componentDidMount() {
@@ -35,12 +34,6 @@ class AdminListingsItem extends React.Component {
     let { value, name } = e.target
     this.setState({ [name]: value })
   }
-
-  // handleSubmit(e) {
-  //   e.preventDefault()
-  //   this.setState({ updating: false })
-  //   this.props.listingUpdate(this.props.listing)
-  // }
 
   handleEditListing() {
     this.setState({ updating: true })
