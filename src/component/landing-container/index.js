@@ -6,15 +6,16 @@ import { storeId } from '../../action/user-id-actions.js'
 import { login, logout } from '../../action/auth-actions.js'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import RaisedButton from 'material-ui/RaisedButton'
-import AppBar from 'material-ui/AppBar'
 import { profileUpdate } from '../../action/profile-actions.js'
 import IconMenu from 'material-ui/IconMenu'
+import AppBar from 'material-ui/AppBar'
 import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import { Link } from 'react-router-dom'
 import * as util from '../../lib/util.js'
 import Avatar from 'material-ui/Avatar'
+import Paper from 'material-ui/Paper'
 import {
   Card,
   CardActions,
@@ -34,7 +35,12 @@ class LandingContainer extends React.Component {
     this.showLock = this.showLock.bind(this)
   }
 
+  componentDidMount() {
+    console.log('DID MOIUNT', this.props.history)
+  }
+
   componentWillMount() {
+    console.log(this.props.history)
     const options = {
       oidcConformant: true,
       auth: {
@@ -80,7 +86,6 @@ class LandingContainer extends React.Component {
   }
 
   render() {
-    console.log(this.props.history)
     return (
       <div className="login-box">
         <MuiThemeProvider>
@@ -102,6 +107,10 @@ class LandingContainer extends React.Component {
                 targetOrigin={{ horizontal: 'left', vertical: 'top' }}
               >
                 <MenuItem
+                  primaryText="Home"
+                  containerElement={<Link to="/" />}
+                />
+                <MenuItem
                   primaryText="Dashboard"
                   containerElement={<Link to="/dashboard" />}
                 />
@@ -122,14 +131,18 @@ class LandingContainer extends React.Component {
         </MuiThemeProvider>
         <div>
           {util.renderIf(
-            this.state.landing,
-            <MuiThemeProvider>
-              <Card>
-                <CardMedia>
-                  <img src="../../../bay.jpeg" />
-                </CardMedia>
-              </Card>
-            </MuiThemeProvider>
+            this.props.history,
+            <div style={{ backgroundImage: 'url(\'../../../bay.jpeg\')' }}>
+              <MuiThemeProvider>
+                <Paper style={{ maxHeight: '600', overflow: 'auto' }}>
+                  <Card>
+                    <CardMedia>
+                      <img src="../../../bay.jpeg" style={{ width: '100%' }} />
+                    </CardMedia>
+                  </Card>
+                </Paper>
+              </MuiThemeProvider>
+            </div>
           )}
         </div>
       </div>
