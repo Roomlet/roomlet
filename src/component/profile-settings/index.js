@@ -73,13 +73,11 @@ class ProfileSettings extends React.Component {
                 style={{ margin: 20 }}
               >
                 <div className="previewComponent">
-                  <form onSubmit={e => this._handleSubmit(e)}>
-                    <input
-                      type="file"
-                      onChange={this.handleChange}
-                      style={{ display: 'none' }}
-                    />
-                  </form>
+                  <input
+                    type="file"
+                    onChange={this.handleChange}
+                    style={{ display: 'none' }}
+                  />
                 </div>
               </RaisedButton>
               <TextField

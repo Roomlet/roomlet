@@ -25,8 +25,7 @@ export const listingsFetchRequest = listing => (dispatch, getState) => {
     .get(`${__API_URL__}/api/listings`)
     .set('Authorization', `Bearer ${listing.token}`)
     .then(res => {
-      console.log('listings fetch request', res.body)
-      dispatch(listingsSet(res.body.data))
+      dispatch(listingsSet(res.body))
       return res
     })
 }
