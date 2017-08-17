@@ -14,10 +14,15 @@ class AdminListingsItem extends React.Component {
       nonSmoking: this.props.listing.nonSmoking,
       parkingSpaces: this.props.listing.parkingSpaces,
       comment: this.props.listing.comment,
+      token: null,
     }
     this.handleEditListing = this.handleEditListing.bind(this)
     this.handleChange = this.handleChange.bind(this)
-    this.handleSubmit = this.handleSubmit.bind(this)
+    //this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentDidMount() {
+    this.setState({ token: this.props.token })
   }
 
   handleChange(e) {
@@ -31,11 +36,11 @@ class AdminListingsItem extends React.Component {
     this.setState({ [name]: value })
   }
 
-  handleSubmit(e) {
-    e.preventDefault()
-    this.setState({ updating: false })
-    this.props.listingUpdate(this.props.listing)
-  }
+  // handleSubmit(e) {
+  //   e.preventDefault()
+  //   this.setState({ updating: false })
+  //   this.props.listingUpdate(this.props.listing)
+  // }
 
   handleEditListing() {
     this.setState({ updating: true })
