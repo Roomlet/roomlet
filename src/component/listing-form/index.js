@@ -16,10 +16,15 @@ class ListingForm extends React.Component {
       title: '',
       verified: false,
       listingURL: '',
+      token: '',
     }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
+  }
+
+  componentDidMount() {
+    this.setState({ token: this.props.token })
   }
 
   handleChange(e) {
@@ -82,6 +87,7 @@ class ListingForm extends React.Component {
 }
 
 export const mapStateToProps = state => ({
+  token: state.auth,
   listings: state.listings,
 })
 

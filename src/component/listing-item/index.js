@@ -21,7 +21,6 @@ class ListingItem extends React.Component {
           .filter(listing => listing.verified === this.props.verified)
           .map((listing, i) => {
             return (
-
               <MuiThemeProvider>
                 <Paper zDepth={2} style={{ marginTop: 10 }}>
                   <List style={{ textAlign: 'left' }}>
