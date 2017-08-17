@@ -53,7 +53,7 @@ class ListingForm extends React.Component {
                 name="title"
                 type="text"
                 placeholder="Name"
-                value={this.state.name}
+                value={this.state.title}
                 onChange={this.handleChange}
                 underlineShow={false}
                 style={{ marginLeft: 20 }}
