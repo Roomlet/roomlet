@@ -58,9 +58,7 @@ class LandingContainer extends React.Component {
       options
     )
 
-    this.lock.on('signup submit', () =>
-      this.setState({ signUp: true, landing: false })
-    )
+    this.lock.on('signup submit', () => this.setState({ signUp: true }))
 
     this.lock.on('authenticated', authResult => {
       this.lock.getUserInfo(authResult.accessToken, (err, profile) => {
@@ -82,7 +80,7 @@ class LandingContainer extends React.Component {
   }
 
   render() {
-    console.log(this.state)
+    console.log(this.props.history)
     return (
       <div className="login-box">
         <MuiThemeProvider>
