@@ -1,7 +1,7 @@
 import {
   profileUpdate,
   profileUpdateRequest,
-} from '../action/profile-actions.js'
+} from '../../action/profile-actions.js'
 
 describe('testing profile actions', () => {
   let mockState = []

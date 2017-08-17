@@ -1,4 +1,4 @@
-import userIdReducer from '../reducer/user-id.js'
+import userIdReducer from '../../reducer/user-id.js'
 
 describe('testing userId reducer', () => {
   let mockState = []

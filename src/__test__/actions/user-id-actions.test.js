@@ -1,4 +1,4 @@
-import { storeId } from '../action/user-id-actions.js'
+import { storeId } from '../../action/user-id-actions.js'
 
 describe('testing userID actions', () => {
   let mockState = []
