@@ -76,3 +76,10 @@ sudo apt-get install nodejs npm
 [Yarn Homepage](https://yarnpkg.com/lang/en/docs/install/#mac-tab)
 
 ## Install Mongo DB
+
+### Refer to Mongo DB documentation specific to Mac OS, Windows, Linux, and other alternatives !
+
+[Mongo DB Homepage Installation Page](https://docs.mongodb.com/manual/administration/install-community/)
+
+
+###
