@@ -180,8 +180,6 @@ class ProfileSettings extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-  token: state.token,
-  userId: state.userId,
   profile: state.profile,
 })
 
