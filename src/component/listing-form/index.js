@@ -7,16 +7,18 @@ import TextField from 'material-ui/TextField'
 import RaisedButton from 'material-ui/RaisedButton'
 import Divider from 'material-ui/Divider'
 import ListingItem from '../listing-item'
-import { listingCreateRequest } from '../../action/listing-actions'
+import {
+  listingCreateRequest,
+  listingsFetchByUserRequest,
+} from '../../action/listing-actions'
 
 class ListingForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       title: '',
-      verified: false,
       listingURL: '',
-      token: '',
+      verified: false,
     }
 
     this.handleChange = this.handleChange.bind(this)
@@ -24,7 +26,7 @@ class ListingForm extends React.Component {
   }
 
   componentDidMount() {
-    this.setState({ token: this.props.token })
+    this.props.listingsFetch()
   }
 
   handleChange(e) {
@@ -87,11 +89,11 @@ class ListingForm extends React.Component {
 }
 
 export const mapStateToProps = state => ({
-  token: state.auth,
   listings: state.listings,
 })
 
 export const mapDispatchToProps = dispatch => ({
+  listingsFetch: id => dispatch(listingsFetchByUserRequest()),
   listingCreate: listing => dispatch(listingCreateRequest(listing)),
 })
 
