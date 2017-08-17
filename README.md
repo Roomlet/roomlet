@@ -5,9 +5,9 @@
 
 ##About the Team
 
-![alt text](https://avatars3.githubusercontent.com/u/20732104?v=4&s=400 "Logo Title Text 1")
+![alt text](https://avatars3.githubusercontent.com/u/20732104?v=4&s=128 "Logo Title Text 1")
 #Kyle Aardal
-![alt text](https://avatars3.githubusercontent.com/u/26240188?v=4&s=400 "Logo Title Text 1")
+![alt text](https://avatars3.githubusercontent.com/u/26240188?v=4&s=128 "Logo Title Text 1")
 #Stephanie Dover
 
 
@@ -17,5 +17,22 @@ I spent the last ten years working in the music industry. I owned an independent
 
 
 ![alt text](https://avatars7.githubusercontent.com/u/24594684?v=4&s=460 "Logo Title Text 1")
-##Michael Axelson
+#Michael Axelson
 Most of my experience is in the financial services industry. I am currently working on projects primarily in JavaScript, with beginner level experience in Python and SQL. I am very interested in full-stack application, using Node.js for the backend and React for the front-end.
+
+## Getting Started
+
+#MacOS
+
+# Use brew to install yarn locally
+
+
+##### 1. Install brew... please visit the brew homepage...
+  ```
+  https://brew.sh/
+  ```
+
+##### 2. Install yarn... please visit the yarn installation homepage to configure yarn to your personal specifications!
+  ```
+  https://yarnpkg.com/lang/en/docs/install/
+  ```
