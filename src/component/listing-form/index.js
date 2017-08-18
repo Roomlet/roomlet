@@ -16,6 +16,7 @@ class ListingForm extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
+      userId: '',
       title: '',
       listingURL: '',
       verified: false,
@@ -26,6 +27,7 @@ class ListingForm extends React.Component {
   }
 
   componentDidMount() {
+    this.setState({ userId: this.props.userId })
     this.props.listingsFetch()
   }
 
@@ -89,6 +91,7 @@ class ListingForm extends React.Component {
 }
 
 export const mapStateToProps = state => ({
+  userId: state.userId,
   listings: state.listings,
 })
 
