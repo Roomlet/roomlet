@@ -14,7 +14,6 @@ class ListingItem extends React.Component {
   }
   componentWillMount() {}
   render() {
-    console.log('render listing item', this.props.listings)
     return (
       <div>
         {this.props.listings
