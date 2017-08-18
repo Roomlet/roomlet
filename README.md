@@ -3,16 +3,6 @@
 ![Roomlet](./roomlet.png)
 
 
-# Team
-
-# Kyle Aardal
-
-# Stephanie Dover
-
-# Joshua Evans
-
-# Michael Axelson
-
 
 # Getting Started
 
@@ -122,3 +112,14 @@ yarn run mongo-on
 
 # Special Notes...
 ## In command prompt, open TWO windows, and follow along with specific instructions to both the Roomlet Repository and Roomlet-Api Repository. Both webpack must be compiled, as well as the Mongo Database must be running in order for the Website to achieve 100% functionality.
+
+
+# Team
+
+Kyle Aardal
+
+Stephanie Dover
+
+Joshua Evans
+
+Michael Axelson
