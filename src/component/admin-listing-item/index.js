@@ -4,6 +4,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import { List, ListItem } from 'material-ui/List'
 import Divider from 'material-ui/Divider'
 import RaisedButton from 'material-ui/RaisedButton'
+import TextField from 'material-ui/TextField'
 
 class AdminListingsItem extends React.Component {
   constructor(props) {
@@ -107,109 +108,139 @@ class AdminListingsItem extends React.Component {
               this.setState({ updating: false })
             }}
           >
-            <p>
+            <ListItem>
               title: {listing.title}
-            </p>
-            <label>
-              verified
+            </ListItem>
+            <Divider />
+            <ListItem>
               <label>
-                yes
-                <input
-                  type="radio"
-                  name="verifiedYes"
+                <p style={{ opacity: '.3' }}>verified</p>
+                <label>
+                  Yes
+                  <input
+                    type="radio"
+                    name="verifiedYes"
+                    onChange={this.handleChange}
+                    value="true"
+                  />
+                </label>
+                <label>
+                  No
+                  <input
+                    type="radio"
+                    name="verifiedNo"
+                    onChange={this.handleChange}
+                    value="false"
+                  />
+                </label>
+              </label>
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <label>
+                <TextField
+                  name="cost"
+                  type="text"
+                  value={this.state.cost}
                   onChange={this.handleChange}
-                  value="true"
+                  underlineShow={false}
+                  style={{ marginLeft: 20 }}
+                  hintText="Cost"
                 />
               </label>
+            </ListItem>
+            <Divider />
+            <ListItem>
               <label>
-                no
-                <input
-                  type="radio"
-                  name="verifiedNo"
+                <TextField
+                  name="landlordPhone"
+                  type="text"
+                  value={this.state.landlordPhone}
                   onChange={this.handleChange}
-                  value="false"
+                  underlineShow={false}
+                  style={{ marginLeft: 20 }}
+                  hintText="Landlord Phone"
                 />
               </label>
-            </label>
-            <label>
-              cost
-              <input
-                name="cost"
-                type="text"
-                value={this.state.cost}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              landlord phone
-              <input
-                name="landlordPhone"
-                type="text"
-                value={this.state.landlordPhone}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              pets allowed
+            </ListItem>
+            <Divider />
+            <ListItem>
               <label>
-                yes
-                <input
-                  type="radio"
-                  name="petsAllowedYes"
+                <p style={{ opacity: '.3' }}>Pets Allowed?</p>
+                <label>
+                  Yes
+                  <input
+                    type="radio"
+                    name="petsAllowedYes"
+                    onChange={this.handleChange}
+                    value="true"
+                  />
+                </label>
+                <label>
+                  No
+                  <input
+                    type="radio"
+                    name="petsAllowedNo"
+                    onChange={this.handleChange}
+                    value="false"
+                  />
+                </label>
+              </label>
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <label>
+                <p style={{ opacity: '.3' }}>Non-Smoking?</p>
+                <label>
+                  Yes
+                  <input
+                    type="radio"
+                    name="nonSmokingYes"
+                    onChange={this.handleChange}
+                    value="true"
+                  />
+                </label>
+                <label>
+                  No
+                  <input
+                    type="radio"
+                    name="nonSmokingNo"
+                    onChange={this.handleChange}
+                    value="false"
+                  />
+                </label>
+              </label>
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <label>
+                <TextField
+                  name="parkingSpaces"
+                  type="number"
+                  value={this.state.parkingSpaces}
                   onChange={this.handleChange}
-                  value="true"
+                  underlineShow={false}
+                  style={{ marginLeft: 20 }}
+                  hintText="Number of Parking Spaces"
                 />
               </label>
+            </ListItem>
+            <Divider />
+            <ListItem>
               <label>
-                no
-                <input
-                  type="radio"
-                  name="petsAllowedNo"
+                <TextField
+                  name="comment"
+                  type="text"
+                  value={this.state.comment}
                   onChange={this.handleChange}
-                  value="false"
+                  underlineShow={false}
+                  style={{ marginLeft: 20 }}
+                  hintText="Comments"
                 />
               </label>
-            </label>
-            <label>
-              nonSmoking?
-              <label>
-                yes
-                <input
-                  type="radio"
-                  name="nonSmokingYes"
-                  onChange={this.handleChange}
-                  value="true"
-                />
-              </label>
-              <label>
-                no
-                <input
-                  type="radio"
-                  name="nonSmokingNo"
-                  onChange={this.handleChange}
-                  value="false"
-                />
-              </label>
-            </label>
-            <label>
-              # parking spaces
-              <input
-                name="parkingSpaces"
-                type="number"
-                value={this.state.parkingSpaces}
-                onChange={this.handleChange}
-              />
-            </label>
-            <label>
-              comments
-              <input
-                name="comment"
-                type="text"
-                value={this.state.comment}
-                onChange={this.handleChange}
-              />
-            </label>
-            <button type="submit">update</button>
+            </ListItem>
+            <Divider />
+            <RaisedButton type="submit" label="Update" />
           </form>
         )}
       </div>

@@ -6,11 +6,15 @@ import { List, ListItem } from 'material-ui/List'
 import FloatingActionButton from 'material-ui/FloatingActionButton'
 import DeleteIcon from 'material-ui/svg-icons/action/delete-forever'
 import Paper from 'material-ui/Paper'
+import * as util from '../../lib/util.js'
+import CheckCircle from 'material-ui/svg-icons/action/check-circle'
 
 class ListingItem extends React.Component {
   constructor(props) {
     super(props)
-    this.state = {}
+    this.state = {
+      verified: this.props.verified,
+    }
   }
   componentWillMount() {}
   render() {
@@ -27,6 +31,14 @@ class ListingItem extends React.Component {
                       key={listing._id}
                       primaryText={listing.title}
                       secondaryText={listing.listingURL}
+                      leftIcon={
+                        <div>
+                          {util.renderIf(
+                            this.state.verified,
+                            <CheckCircle style={{ fill: 'green' }} />
+                          )}
+                        </div>
+                      }
                       rightIconButton={
                         <FloatingActionButton
                           onClick={() => this.props.listingDelete(listing)}
