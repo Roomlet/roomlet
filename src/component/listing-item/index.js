@@ -25,7 +25,7 @@ class ListingItem extends React.Component {
                   <List style={{ textAlign: 'left' }}>
                     <ListItem
                       key={listing._id}
-                      primaryText={listing.name}
+                      primaryText={listing.title}
                       secondaryText={listing.listingURL}
                       rightIconButton={
                         <FloatingActionButton
