@@ -4,6 +4,19 @@ import { renderIf } from '../../lib/util.js'
 import TextField from 'material-ui/TextField'
 import AdminListingsItem from '../admin-listing-item'
 import * as listingActions from '../../action/listing-actions'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { List, ListItem } from 'material-ui/List'
+import Paper from 'material-ui/Paper'
+import Divider from 'material-ui/Divider'
+import LandingContainer from '../landing-container'
+import {
+  Card,
+  CardActions,
+  CardHeader,
+  CardMedia,
+  CardTitle,
+  CardText,
+} from 'material-ui/Card'
 
 class AdminDashboard extends React.Component {
   constructor(props) {
@@ -18,21 +31,40 @@ class AdminDashboard extends React.Component {
   render() {
     return (
       <div id="admin">
-        <h1>Admin Dashboard</h1>
-        <ul>
-          {this.props.listings.map(listing => {
-            return (
-              <li key={listing._id}>
-                <AdminListingsItem
-                  token={this.props.token}
-                  listing={listing}
-                  listingUpdate={this.props.listingUpdate}
-                  listingDelete={this.props.listingDelete}
+        <LandingContainer />
+        <MuiThemeProvider>
+          <div>
+            <Paper zDepth={2}>
+              <Card>
+                <CardHeader
+                  title="Admin Dashboard"
+                  titleStyle={{
+                    fontSize: '1.5em',
+                    fontWeight: '500',
+                    margin: '0 auto',
+                  }}
                 />
-              </li>
-            )
-          })}
-        </ul>
+                <CardMedia>
+                  <List>
+                    <Divider />
+                    {this.props.listings.map(listing => {
+                      return (
+                        <List key={listing._id}>
+                          <AdminListingsItem
+                            token={this.props.token}
+                            listing={listing}
+                            listingUpdate={this.props.listingUpdate}
+                            listingDelete={this.props.listingDelete}
+                          />
+                        </List>
+                      )
+                    })}
+                  </List>
+                </CardMedia>
+              </Card>
+            </Paper>
+          </div>
+        </MuiThemeProvider>
       </div>
     )
   }
