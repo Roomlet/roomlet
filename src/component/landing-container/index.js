@@ -111,7 +111,7 @@ class LandingContainer extends React.Component {
                     iconStyle={{ fill: 'white' }}
                     style={{ padding: '0px' }}
                   >
-                    <Avatar src="../../../roomlet.png" />
+                    <Avatar src="https://s3.us-east-2.amazonaws.com/roomletres/roomlet.png" />
                   </IconButton>
                 }
               >
@@ -146,7 +146,7 @@ class LandingContainer extends React.Component {
                 <Paper>
                   <Card>
                     <CardMedia>
-                      <img src="../../../bay.png" />
+                      <img src="https://s3.us-east-2.amazonaws.com/roomletres/bay.png" />
                     </CardMedia>
                   </Card>
                 </Paper>
