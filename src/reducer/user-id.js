@@ -1,4 +1,4 @@
-export default (state = null, { type, payload }) => {
+export default (state = {}, { type, payload }) => {
   switch (type) {
   case 'STORE_ID':
     return payload

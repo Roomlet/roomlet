@@ -21,6 +21,7 @@ export const listingDelete = listing => ({
 })
 
 export const listingsFetchRequest = listing => (dispatch, getState) => {
+  console.log('fetch all')
   let { auth } = getState()
   return superagent
     .get(`${__API_URL__}/api/listings`)
@@ -32,9 +33,11 @@ export const listingsFetchRequest = listing => (dispatch, getState) => {
 }
 
 export const listingsFetchByUserRequest = userId => (dispatch, getState) => {
+  console.log('fetch for user', getState())
   let { auth, userId } = getState()
+  console.log('userId')
   return superagent
-    .get(`${__API_URL__}/api/listings/?${userId}`)
+    .get(`${__API_URL__}/api/listings/${userId}`)
     .set('Authorization', `Bearer ${auth}`)
     .then(res => {
       console.log('fetch by user response', res.text)
