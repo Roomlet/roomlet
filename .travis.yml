@@ -11,7 +11,7 @@ addons:
       - gcc-4.8
       - g++-4.8
 env:
-  - CXX=g++-4.8 APP_SECRET='lulwat' MONGODB_URI='mongodb://localhost/' AWS_BUCKET='fake-bucket' AWS_ACCESS_KEY_ID='fakekey' AWS_SECRET_ACCESS_KEY='fakekey' API_URL='http://localhost:7000' PORT=7000
+  - CXX=g++-4.8 APP_SECRET='lulwat' MONGODB_URI='mongodb://localhost/' AWS_BUCKET='fake-bucket' AWS_ACCESS_KEY_ID='fakekey' AWS_SECRET_ACCESS_KEY='fakekey' API_URL='http://localhost:7000' PORT=7000 AUTH0_CLIENT_ID='' AUTH0_CLIENT_DOMAIN='' API_URL='http://localhost:3000'
 sudo: required
 before_script: npm i
 script:
