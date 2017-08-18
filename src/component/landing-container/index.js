@@ -118,8 +118,15 @@ class LandingContainer extends React.Component {
       >
         <MuiThemeProvider>
           <AppBar
-            title="Roomlet"
-            style={{ backgroundColor: '#4ED4A6', fontFamily: 'Libre Franklin' }}
+            title="ROOMLET"
+            style={{
+              backgroundColor: '#4ED4A6',
+            }}
+            titleStyle={{
+              fontFamily: 'Libre Franklin',
+              letterSpacing: '.2em',
+              fontWeight: '800',
+            }}
             iconElementLeft={
               <IconMenu
                 iconButtonElement={
