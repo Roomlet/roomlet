@@ -6,7 +6,10 @@ import { storeId } from '../../action/user-id-actions.js'
 import { login, logout } from '../../action/auth-actions.js'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import RaisedButton from 'material-ui/RaisedButton'
-import { profileUpdate } from '../../action/profile-actions.js'
+import {
+  profileUpdate,
+  profileFetchRequest,
+} from '../../action/profile-actions.js'
 import IconMenu from 'material-ui/IconMenu'
 import AppBar from 'material-ui/AppBar'
 import MenuItem from 'material-ui/MenuItem'
@@ -24,6 +27,7 @@ import {
   CardTitle,
   CardText,
 } from 'material-ui/Card'
+import Dialog from 'material-ui/Dialog'
 
 class LandingContainer extends React.Component {
   constructor(props) {
@@ -31,8 +35,19 @@ class LandingContainer extends React.Component {
     this.state = {
       signUp: false,
       landing: true,
+      open: false,
     }
     this.showLock = this.showLock.bind(this)
+    this.handleOpen = this.handleOpen.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+  }
+
+  handleOpen() {
+    this.setState({ open: true })
+  }
+
+  handleClose() {
+    this.setState({ open: false })
   }
 
   componentDidMount() {
@@ -69,12 +84,9 @@ class LandingContainer extends React.Component {
     this.lock.on('authenticated', authResult => {
       this.lock.getUserInfo(authResult.accessToken, (err, profile) => {
         if (err) return new Error('failed to authenticate')
-        console.log('PROFILE', profile.sub)
         this.props.storeId(profile.sub)
         this.props.login(authResult.accessToken)
-        if (profile.user_metadata)
-          this.props.profileUpdate(profile.user_metadata.profile)
-
+        this.props.profileFetch()
         this.state.signUp
           ? this.props.history.push('/settings')
           : this.props.history.push('/dashboard')
@@ -91,20 +103,17 @@ class LandingContainer extends React.Component {
         <MuiThemeProvider>
           <AppBar
             title="Roomlet"
-            style={{ backgroundColor: '#3AB08F', fontFamily: 'Libre Franklin' }}
+            style={{ backgroundColor: '#4ED4A6', fontFamily: 'Libre Franklin' }}
             iconElementLeft={
               <IconMenu
                 iconButtonElement={
-                  <IconButton iconStyle={{ fill: 'white' }}>
-                    <Avatar
-                      src={this.props.avatar}
-                      size={32}
-                      style={{ verticalAlign: 'middle' }}
-                    />
+                  <IconButton
+                    iconStyle={{ fill: 'white' }}
+                    style={{ padding: '0px' }}
+                  >
+                    <Avatar src="../../../roomlet.png" />
                   </IconButton>
                 }
-                anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
-                targetOrigin={{ horizontal: 'left', vertical: 'top' }}
               >
                 <MenuItem
                   primaryText="Home"
@@ -124,7 +133,7 @@ class LandingContainer extends React.Component {
               <RaisedButton
                 onClick={this.showLock}
                 label="Signup"
-                style={{ verticalAlign: 'middle', height: '80%' }}
+                style={{ marginTop: '4px' }}
               />
             }
           />
@@ -132,15 +141,61 @@ class LandingContainer extends React.Component {
         <div>
           {util.renderIf(
             this.props.history,
-            <div style={{ backgroundImage: 'url(\'../../../bay.jpeg\')' }}>
+            <div style={{ backgroundImage: 'url(\'../../../bay.png\')' }}>
               <MuiThemeProvider>
                 <Paper style={{ maxHeight: '600', overflow: 'auto' }}>
                   <Card>
                     <CardMedia>
-                      <img src="../../../bay.jpeg" style={{ width: '100%' }} />
+                      <img src="../../../bay.png" style={{ width: '100%' }} />
                     </CardMedia>
                   </Card>
                 </Paper>
+              </MuiThemeProvider>
+              <MuiThemeProvider>
+                <div>
+                  />
+                  <RaisedButton
+                    label="About Us"
+                    onClick={this.handleOpen}
+                    style={{ position: 'absolute', top: '15%', left: '3%' }}
+                  />
+                  <Dialog
+                    title="ROOMLET"
+                    titleStyle={{
+                      fontSize: '2em',
+                      letterSpacing: '.2em',
+                      fontWeight: '800',
+                    }}
+                    modal={false}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                  >
+                    <p>
+                      Roomlet verifies landlords, tenants, and rental listings.
+                      We verify the tenant’s identity, that listings are
+                      authentic, and that the property manager has the ability
+                      to rent out space in their posting
+                    </p>
+                    <h1>Renters</h1>{' '}
+                    <p>
+                      If you’re looking for a rental, you know that there are a
+                      lot of fake rental listings out there. Scammers intend to
+                      steal your identity, and/or your money. This is worse if
+                      you’re relocating. It’s hard to tell what’s real and
+                      what’s not when you can’t visit the listing. Click here to
+                      read: 2017 Bay Area and Seattle Student Summer Sublet
+                      Research.
+                    </p>{' '}
+                    <h1>Landlords</h1>
+                    <p>
+                      If you’re a landlord or a subletter, you’ve probably had
+                      potential tenants change their minds as soon as you ask
+                      them for any personally identifiable information. Verify
+                      your listing with us, so you can get more serious and
+                      trustworthy leads.
+                    </p>
+                  </Dialog>
+                </div>
               </MuiThemeProvider>
             </div>
           )}
@@ -156,6 +211,7 @@ export const mapDispatchToProps = dispatch => ({
   logout: () => dispatch(logout()),
   storeId: id => dispatch(storeId(id)),
   login: token => dispatch(login(token)),
+  profileFetch: () => dispatch(profileFetchRequest()),
   profileUpdate: profile => dispatch(profileUpdate(profile)),
 })
 
