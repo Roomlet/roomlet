@@ -188,6 +188,7 @@ class LandingContainer extends React.Component {
                     modal={false}
                     open={this.state.open}
                     onRequestClose={this.handleClose}
+                    autoScrollBodyContent={true}
                   >
                     <p>
                       Roomlet verifies landlords, tenants, and rental listings.
