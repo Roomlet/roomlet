@@ -65,7 +65,7 @@ class LandingContainer extends React.Component {
         },
       },
       theme: {
-        logo: '../../../roomlet.png',
+        logo: 'https://s3.us-east-2.amazonaws.com/roomletres/roomlet.png',
         primaryColor: '#3AB08F',
       },
       languageDictionary: {
