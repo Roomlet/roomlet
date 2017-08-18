@@ -39,6 +39,15 @@ class ProfileSettings extends React.Component {
 
   componentWillMount() {
     if (this.props.profile) this.setState(this.props.profile)
+    if (!this.props.avatar) {
+      console.log('will mount avatar', this.props.avatar)
+      try {
+        let userInfo = JSON.parse(localStorage.getItem('userInfo'))
+        this.setState({ preview: userInfo.picture })
+      } catch (err) {
+        util.logError(err)
+      }
+    }
   }
 
   handleChange(e) {
@@ -76,6 +85,7 @@ class ProfileSettings extends React.Component {
         <MuiThemeProvider>
           <Paper zDepth={2}>
             <form onSubmit={this.handleSubmit}>
+              <Avatar src={this.state.preview} />
               <RaisedButton
                 containerElement="label"
                 label="Upload Photo"
