@@ -141,14 +141,19 @@ class LandingContainer extends React.Component {
                   primaryText="Home"
                   containerElement={<Link to="/" />}
                 />
-                <MenuItem
-                  primaryText="Dashboard"
-                  containerElement={<Link to="/dashboard" />}
-                />
-                <MenuItem
-                  primaryText="Profile Settings"
-                  containerElement={<Link to="/settings" />}
-                />
+                {util.renderIf(
+                  this.state.loggedIn === true,
+                  <div>
+                    <MenuItem
+                      primaryText="Dashboard"
+                      containerElement={<Link to="/dashboard" />}
+                    />
+                    <MenuItem
+                      primaryText="Profile Settings"
+                      containerElement={<Link to="/settings" />}
+                    />
+                  </div>
+                )}
               </IconMenu>
             }
             iconElementRight={
