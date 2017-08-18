@@ -42,8 +42,17 @@ class ProfileSettings extends React.Component {
   }
 
   handleChange(e) {
-    let { value, name } = e.target
-    this.setState({ [name]: value })
+    let { value, name, files } = e.target
+
+    if (name === 'avatar') {
+      // let { files } = e.target
+      let avatar = files[0]
+      this.setState({ [name]: value })
+      util
+        .photoToDataURL(avatar)
+        .then(preview => this.setState({ preview }))
+        .catch(console.error)
+    }
   }
 
   handleSubmit(e) {
@@ -60,10 +69,10 @@ class ProfileSettings extends React.Component {
     const formStyle = {
       marginLeft: 20,
     }
-
+    console.log(this.state)
     return (
       <div className="profile-form">
-        <LandingContainer />
+        <LandingContainer avatar={this.state.preview} />
         <MuiThemeProvider>
           <Paper zDepth={2}>
             <form onSubmit={this.handleSubmit}>
@@ -75,6 +84,8 @@ class ProfileSettings extends React.Component {
                 <div className="previewComponent">
                   <input
                     type="file"
+                    name="avatar"
+                    value={this.state.avatar}
                     onChange={this.handleChange}
                     style={{ display: 'none' }}
                   />

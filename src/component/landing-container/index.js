@@ -6,28 +6,56 @@ import { storeId } from '../../action/user-id-actions.js'
 import { login, logout } from '../../action/auth-actions.js'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 import RaisedButton from 'material-ui/RaisedButton'
-import AppBar from 'material-ui/AppBar'
 import {
   profileUpdate,
   profileFetchRequest,
 } from '../../action/profile-actions.js'
 import IconMenu from 'material-ui/IconMenu'
+import AppBar from 'material-ui/AppBar'
 import MenuItem from 'material-ui/MenuItem'
 import IconButton from 'material-ui/IconButton'
 import MoreVertIcon from 'material-ui/svg-icons/navigation/more-vert'
 import { Link } from 'react-router-dom'
 import * as util from '../../lib/util.js'
+import Avatar from 'material-ui/Avatar'
+import Paper from 'material-ui/Paper'
+import {
+  Card,
+  CardActions,
+  CardHeader,
+  CardMedia,
+  CardTitle,
+  CardText,
+} from 'material-ui/Card'
+import Dialog from 'material-ui/Dialog'
 
 class LandingContainer extends React.Component {
   constructor(props) {
     super(props)
     this.state = {
       signUp: false,
+      landing: true,
+      open: false,
     }
     this.showLock = this.showLock.bind(this)
+    this.handleOpen = this.handleOpen.bind(this)
+    this.handleClose = this.handleClose.bind(this)
+  }
+
+  handleOpen() {
+    this.setState({ open: true })
+  }
+
+  handleClose() {
+    this.setState({ open: false })
+  }
+
+  componentDidMount() {
+    console.log('DID MOIUNT', this.props.history)
   }
 
   componentWillMount() {
+    console.log(this.props.history)
     const options = {
       oidcConformant: true,
       auth: {
@@ -75,17 +103,22 @@ class LandingContainer extends React.Component {
         <MuiThemeProvider>
           <AppBar
             title="Roomlet"
-            style={{ backgroundColor: '#3AB08F', fontFamily: 'Libre Franklin' }}
+            style={{ backgroundColor: '#4ED4A6', fontFamily: 'Libre Franklin' }}
             iconElementLeft={
               <IconMenu
                 iconButtonElement={
-                  <IconButton iconStyle={{ fill: 'white' }}>
-                    <MoreVertIcon />
+                  <IconButton
+                    iconStyle={{ fill: 'white' }}
+                    style={{ padding: '0px' }}
+                  >
+                    <Avatar src="../../../roomlet.png" />
                   </IconButton>
                 }
-                anchorOrigin={{ horizontal: 'left', vertical: 'top' }}
-                targetOrigin={{ horizontal: 'left', vertical: 'top' }}
               >
+                <MenuItem
+                  primaryText="Home"
+                  containerElement={<Link to="/" />}
+                />
                 <MenuItem
                   primaryText="Dashboard"
                   containerElement={<Link to="/dashboard" />}
@@ -97,10 +130,76 @@ class LandingContainer extends React.Component {
               </IconMenu>
             }
             iconElementRight={
-              <RaisedButton onClick={this.showLock} label="Signup" />
+              <RaisedButton
+                onClick={this.showLock}
+                label="Signup"
+                style={{ marginTop: '4px' }}
+              />
             }
           />
         </MuiThemeProvider>
+        <div>
+          {util.renderIf(
+            this.props.history,
+            <div style={{ backgroundImage: 'url(\'../../../bay.png\')' }}>
+              <MuiThemeProvider>
+                <Paper style={{ maxHeight: '600', overflow: 'auto' }}>
+                  <Card>
+                    <CardMedia>
+                      <img src="../../../bay.png" style={{ width: '100%' }} />
+                    </CardMedia>
+                  </Card>
+                </Paper>
+              </MuiThemeProvider>
+              <MuiThemeProvider>
+                <div>
+                  />
+                  <RaisedButton
+                    label="About Us"
+                    onClick={this.handleOpen}
+                    style={{ position: 'absolute', top: '15%', left: '3%' }}
+                  />
+                  <Dialog
+                    title="ROOMLET"
+                    titleStyle={{
+                      fontSize: '2em',
+                      letterSpacing: '.2em',
+                      fontWeight: '800',
+                    }}
+                    modal={false}
+                    open={this.state.open}
+                    onRequestClose={this.handleClose}
+                  >
+                    <p>
+                      Roomlet verifies landlords, tenants, and rental listings.
+                      We verify the tenant’s identity, that listings are
+                      authentic, and that the property manager has the ability
+                      to rent out space in their posting
+                    </p>
+                    <h1>Renters</h1>{' '}
+                    <p>
+                      If you’re looking for a rental, you know that there are a
+                      lot of fake rental listings out there. Scammers intend to
+                      steal your identity, and/or your money. This is worse if
+                      you’re relocating. It’s hard to tell what’s real and
+                      what’s not when you can’t visit the listing. Click here to
+                      read: 2017 Bay Area and Seattle Student Summer Sublet
+                      Research.
+                    </p>{' '}
+                    <h1>Landlords</h1>
+                    <p>
+                      If you’re a landlord or a subletter, you’ve probably had
+                      potential tenants change their minds as soon as you ask
+                      them for any personally identifiable information. Verify
+                      your listing with us, so you can get more serious and
+                      trustworthy leads.
+                    </p>
+                  </Dialog>
+                </div>
+              </MuiThemeProvider>
+            </div>
+          )}
+        </div>
       </div>
     )
   }
