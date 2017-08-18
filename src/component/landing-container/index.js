@@ -28,6 +28,7 @@ import {
   CardText,
 } from 'material-ui/Card'
 import Dialog from 'material-ui/Dialog'
+import { GridList, GridTile } from 'material-ui/GridList'
 
 class LandingContainer extends React.Component {
   constructor(props) {
@@ -99,7 +100,22 @@ class LandingContainer extends React.Component {
 
   render() {
     return (
-      <div className="login-box">
+      <div
+        className="login-box"
+        style={{
+          backgroundImage:
+            'url(https://s3.us-east-2.amazonaws.com/roomletres/bay.png)',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          zIndex: '999',
+          position: 'fixed',
+          top: '0',
+          bottom: '0',
+          left: '0',
+          right: '0',
+        }}
+      >
         <MuiThemeProvider>
           <AppBar
             title="Roomlet"
@@ -142,15 +158,6 @@ class LandingContainer extends React.Component {
           {util.renderIf(
             this.props.history,
             <div>
-              <MuiThemeProvider>
-                <Paper>
-                  <Card>
-                    <CardMedia>
-                      <img src="https://s3.us-east-2.amazonaws.com/roomletres/bay.png" />
-                    </CardMedia>
-                  </Card>
-                </Paper>
-              </MuiThemeProvider>
               <MuiThemeProvider>
                 <div>
                   <RaisedButton
