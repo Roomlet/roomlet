@@ -19,6 +19,7 @@ import { Link } from 'react-router-dom'
 import * as util from '../../lib/util.js'
 import Avatar from 'material-ui/Avatar'
 import Paper from 'material-ui/Paper'
+import FlatButton from 'material-ui/FlatButton'
 import {
   Card,
   CardActions,
@@ -100,22 +101,7 @@ class LandingContainer extends React.Component {
 
   render() {
     return (
-      <div
-        className="login-box"
-        style={{
-          backgroundImage:
-            'url(https://s3.us-east-2.amazonaws.com/roomletres/bay.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          backgroundRepeat: 'no-repeat',
-          zIndex: '999',
-          position: 'fixed',
-          top: '0',
-          bottom: '0',
-          left: '0',
-          right: '0',
-        }}
-      >
+      <div className="login-box">
         <MuiThemeProvider>
           <AppBar
             title="ROOMLET"
@@ -156,7 +142,7 @@ class LandingContainer extends React.Component {
               <RaisedButton
                 onClick={this.showLock}
                 label="Signup"
-                style={{ marginTop: '4px' }}
+                style={{ marginTop: '4px', marginRight: '10px' }}
               />
             }
           />
@@ -164,13 +150,33 @@ class LandingContainer extends React.Component {
         <div>
           {util.renderIf(
             this.props.history,
-            <div>
+            <div
+              style={{
+                backgroundImage:
+                  'url(https://s3.us-east-2.amazonaws.com/roomletres/bay.png)',
+                backgroundSize: 'cover',
+                backgroundPosition: 'center',
+                backgroundRepeat: 'no-repeat',
+                zIndex: '999',
+                position: 'fixed',
+                top: '0',
+                bottom: '0',
+                left: '0',
+                right: '0',
+              }}
+            >
               <MuiThemeProvider>
                 <div>
-                  <RaisedButton
-                    label="About Us"
+                  <FlatButton
+                    label="About"
                     onClick={this.handleOpen}
-                    style={{ position: 'absolute', top: '15%', left: '3%' }}
+                    labelStyle={{
+                      color: 'white',
+                      letterSpacing: '.15em',
+                      fontSize: '1.2em',
+                      fontWeight: '500',
+                    }}
+                    style={{ position: 'absolute', top: '93%', left: '2%' }}
                   />
                   <Dialog
                     title="ROOMLET"
