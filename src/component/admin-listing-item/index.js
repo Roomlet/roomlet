@@ -1,5 +1,9 @@
 import React from 'react'
 import { renderIf } from '../../lib/util.js'
+import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+import { List, ListItem } from 'material-ui/List'
+import Divider from 'material-ui/Divider'
+import RaisedButton from 'material-ui/RaisedButton'
 
 class AdminListingsItem extends React.Component {
   constructor(props) {
@@ -46,39 +50,52 @@ class AdminListingsItem extends React.Component {
         {renderIf(
           !this.state.updating,
           <div>
-            <p>
-              title: {listing.title}
-            </p>
-            <p>
-              date uploaded: {listing.listingCreatedOn}
-            </p>
-            <p>
-              link: <a href="{listing.listingURL}">{listing.listingURL}</a>
-            </p>
-            <p>
-              verified: {listing.verified ? 'yes' : 'no'}
-            </p>
-            <p>
-              rent cost: {listing.cost}
-            </p>
-            <p>
-              landlord phone: {listing.landlordPhone}
-            </p>
-            <p>
-              pets allowed? {listing.petsAllowed ? 'yes' : 'no'}
-            </p>
-            <p>
-              non-smoking? {listing.nonSmoking ? 'yes' : 'no'}
-            </p>
-            <p>
-              parking spaces: {listing.parkingSpaces}
-            </p>
-            <p>
-              comments: {listing.comment}
-            </p>
-            <button onClick={this.handleEditListing}>edit</button>
+            <ListItem>
+              <b>Title:</b> {listing.title}
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <b>Date Uploaded:</b> {listing.listingCreatedOn}
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <b>Link:</b>{' '}
+              <a href="{listing.listingURL}">{listing.listingURL}</a>
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <b>Verified:</b> {listing.verified ? 'yes' : 'no'}
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <b>Rent Cost:</b> {listing.cost}
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <b>Landlord Phone:</b> {listing.landlordPhone}
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <b>Pets Allowed?</b> {listing.petsAllowed ? 'yes' : 'no'}
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <b>Non-Smoking?</b> {listing.nonSmoking ? 'yes' : 'no'}
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <b>Parking Spaces:</b> {listing.parkingSpaces}
+            </ListItem>
+            <Divider />
+            <ListItem>
+              <b>Comments:</b> {listing.comment}
+            </ListItem>
+            <RaisedButton onClick={this.handleEditListing} label="Edit" />
             <span> </span>
-            <button onClick={() => this.props.listingDelete(listing)}>x</button>
+            <RaisedButton
+              onClick={() => this.props.listingDelete(listing)}
+              label="Delete"
+            />
           </div>
         )}
         {renderIf(
