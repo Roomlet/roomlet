@@ -141,19 +141,18 @@ class LandingContainer extends React.Component {
         <div>
           {util.renderIf(
             this.props.history,
-            <div style={{ backgroundImage: 'url(\'../../../bay.png\')' }}>
+            <div>
               <MuiThemeProvider>
-                <Paper style={{ maxHeight: '600', overflow: 'auto' }}>
+                <Paper>
                   <Card>
                     <CardMedia>
-                      <img src="../../../bay.png" style={{ width: '100%' }} />
+                      <img src="../../../bay.png" />
                     </CardMedia>
                   </Card>
                 </Paper>
               </MuiThemeProvider>
               <MuiThemeProvider>
                 <div>
-                  />
                   <RaisedButton
                     label="About Us"
                     onClick={this.handleOpen}
