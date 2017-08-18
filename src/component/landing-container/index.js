@@ -37,6 +37,7 @@ class LandingContainer extends React.Component {
     this.state = {
       signUp: false,
       landing: true,
+      loggedIn: false,
       open: false,
     }
     this.showLock = this.showLock.bind(this)
@@ -89,6 +90,7 @@ class LandingContainer extends React.Component {
         this.props.storeId(profile.sub)
         this.props.login(authResult.accessToken)
         this.props.profileFetch()
+        this.setState({ loggedIn: true })
         this.state.signUp
           ? this.props.history.push('/settings')
           : this.props.history.push('/dashboard')
@@ -141,7 +143,7 @@ class LandingContainer extends React.Component {
             iconElementRight={
               <RaisedButton
                 onClick={this.showLock}
-                label="Login"
+                label={this.state.loggedIn ? 'Logout' : 'Login'}
                 style={{ marginTop: '4px', marginRight: '10px' }}
               />
             }
