@@ -85,7 +85,10 @@ class ProfileSettings extends React.Component {
         <MuiThemeProvider>
           <Paper zDepth={2}>
             <form onSubmit={this.handleSubmit}>
-              <Avatar src={this.state.preview} />
+              <Avatar
+                style={{ marginTop: '25px', marginLeft: '10px' }}
+                src={this.state.preview}
+              />
               <RaisedButton
                 containerElement="label"
                 label="Upload Photo"
