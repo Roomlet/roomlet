@@ -141,7 +141,7 @@ class LandingContainer extends React.Component {
             iconElementRight={
               <RaisedButton
                 onClick={this.showLock}
-                label="Signup"
+                label="Login"
                 style={{ marginTop: '4px', marginRight: '10px' }}
               />
             }
