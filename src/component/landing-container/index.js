@@ -37,9 +37,10 @@ class LandingContainer extends React.Component {
     this.state = {
       signUp: false,
       landing: true,
-      loggedIn: false,
+      loggedIn: localStorage.loggedIn ? true : false,
       open: false,
     }
+    this.logout = this.logout.bind(this)
     this.showLock = this.showLock.bind(this)
     this.handleOpen = this.handleOpen.bind(this)
     this.handleClose = this.handleClose.bind(this)
@@ -51,10 +52,6 @@ class LandingContainer extends React.Component {
 
   handleClose() {
     this.setState({ open: false })
-  }
-
-  componentDidMount() {
-    console.log('DID MOIUNT', this.props.history)
   }
 
   componentWillMount() {
@@ -82,7 +79,9 @@ class LandingContainer extends React.Component {
       options
     )
 
-    this.lock.on('signup submit', () => this.setState({ signUp: true }))
+    this.lock.on('signup submit', () => {
+      this.setState({ signUp: true })
+    })
 
     this.lock.on('authenticated', authResult => {
       this.lock.getUserInfo(authResult.accessToken, (err, profile) => {
@@ -90,15 +89,27 @@ class LandingContainer extends React.Component {
         this.props.storeId(profile.sub)
         this.props.login(authResult.accessToken)
         this.props.profileFetch()
-        this.setState({ loggedIn: true })
+        localStorage.setItem('loggedIn', true)
         this.state.signUp
           ? this.props.history.push('/settings')
           : this.props.history.push('/dashboard')
       })
     })
   }
+
   showLock() {
     this.lock.show()
+  }
+
+  logout() {
+    localStorage.removeItem('loglevel')
+    localStorage.removeItem('loggedIn')
+    localStorage.removeItem('authToken')
+    localStorage.removeItem('reduxPersist:auth')
+    localStorage.removeItem('reduxPersist:userId')
+    localStorage.removeItem('reduxPersist:profile')
+    localStorage.removeItem('reduxPersist:listings')
+    this.lock.logout()
   }
 
   render() {
@@ -142,7 +153,7 @@ class LandingContainer extends React.Component {
             }
             iconElementRight={
               <RaisedButton
-                onClick={this.showLock}
+                onClick={this.state.loggedIn ? this.logout : this.showLock}
                 label={this.state.loggedIn ? 'Logout' : 'Login'}
                 style={{ marginTop: '4px', marginRight: '10px' }}
               />
@@ -154,8 +165,7 @@ class LandingContainer extends React.Component {
             this.props.history,
             <div
               style={{
-                backgroundImage:
-                  'url(https://s3.us-east-2.amazonaws.com/roomletres/bay.png)',
+                backgroundImage: 'url(https://s3.us-east-2.amazonaws.com/roomletres/bay.png)',
                 backgroundSize: 'cover',
                 backgroundPosition: 'center',
                 backgroundRepeat: 'no-repeat',
